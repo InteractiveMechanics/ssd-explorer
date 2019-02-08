@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/mapbox/mapbox-gl.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.css" crossorigin="anonymous">
+
+    <title>Explore the Epidemic - Spit Spreads Death</title>
+</head>
+<body class="">
+	<div id="intro" class="fade show">
+		<h1>Explore the Epidemic</h1>
+		<h2>See how the 1918-19 influenza epidemic affected the citizens and neighborhoods of Philadelphia.</h2>
+		<button id="intro-search" data-id="search-panel" type="button" class="btn btn-primary btn-lg">Search the City</button>
+		<button id="intro-explore" data-id="explore-panel" type="button" class="btn btn-primary btn-lg">Explore by Neighborhood</button>
+		
+		<div class="footer">
+			<a href="http://muttermuseum.org/" type="button" class="btn btn-primary" target="_blank">Visit the Exhibit</a>
+			<address>
+				Spit Spreads Death at the Mütter Museum<br/>
+				College of Physicians of Philadelphia<br/>
+				9 S 22nd St, Philadelphia, PA 19103
+			</address>
+		</div>
+	</div>
+	
+	<main>
+		<div id="map"></div>
+		<nav>
+			<button id="nav-explore" data-id="explore-panel" type="button"></button>
+			<button id="nav-search" data-id="search-panel" type="button"></button>
+			<button id="nav-list" data-id="list-panel" type="button"></button>
+		</nav>
+		
+		<aside id="search-panel" class="side-panel">
+			<form></form>
+			<ul id="search-panel-results"></ul>				
+		</aside>
+		
+		<aside id="explore-panel" class="side-panel">
+			<h1>Explore by Neighborhood</h1>
+			<ul id="explore-panel-neighborhoods"></ul>
+		</aside>
+		
+		<aside id="list-panel" class="side-panel">
+			<h1>Explore by Location</h1>
+			<ul id="list-panel-locations"></ul>
+		</aside>
+		
+		<aside id="detail-panel" class="side-panel"></aside>
+	</main>
+	
+	
+	<script id="single-search-tmpl" type="text/x-handlebars-template">
+		<li><img src="{{ icon }}" />{{ location }}</li>
+	</script>
+	
+	<script id="list-location-tmpl" type="text/x-handlebars-template">
+		<li><img src="{{ icon }}" />{{ location }}</li>
+	</script>
+	
+	<script id="list-neighborhood-tmpl" type="text/x-handlebars-template">
+		<li>{{ neighborhood }}</li>
+	</script>
+	
+	<script id="single-neighborhood-tmpl" type="text/x-handlebars-template">
+		<h1>{{ neighborhood }}</h1>
+		<h2>The Flu in {{ neighborhood }}</h2>
+		<p>{{ flu_impact }}</p>
+		<hr/>
+		<h2>About {{ neighborhood }}</h2>
+		<p>{{ about_neighborhood }}</p>
+	</script>
+	
+	<script id="single-point-tmpl" type="text/x-handlebars-template">
+		<h1>{{ title }}</h1>
+		{{ content }}
+	</script>
+	
+
+    <script src="./js/jquery/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery/popper.min.js" crossorigin="anonymous"></script>
+    <script src="./js/defiant/defiant.min.js" crossorigin="anonymous"></script>
+    <script src="./js/mapbox/mapbox-gl.js" crossorigin="anonymous"></script>
+    <script src="./js/handlebars/handlebars-v4.0.12.js" crossorigin="anonymous"></script>
+    <script src="./js/bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="./js/chartjs/Chart.bundle.min.js" crossorigin="anonymous"></script>
+    
+    <script src="./js/Utils.js" crossorigin="anonymous"></script>
+    <script src="./js/UI.js" crossorigin="anonymous"></script>
+    <script src="./js/Data.js" crossorigin="anonymous"></script>
+    <script src="./js/App.js" crossorigin="anonymous"></script>
+</body>
+</html>

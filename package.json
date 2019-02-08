@@ -1,0 +1,10 @@
+{
+  "name": "SSD-Explorer",
+  "version": "1.0.0",
+  "devDependencies": {
+    "sass": "latest",
+    "grunt": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest"
+  }
+}
