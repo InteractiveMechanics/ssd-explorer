@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./js/mottie/css/keyboard.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/mapbox/mapbox-gl.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css" crossorigin="anonymous">
@@ -32,13 +32,80 @@
 	<main>
 		<div id="map"></div>
 		<nav>
-			<button id="nav-explore" data-id="explore-panel" type="button"></button>
-			<button id="nav-search" data-id="search-panel" type="button"></button>
-			<button id="nav-list" data-id="list-panel" type="button"></button>
+			<button id="nav-explore" data-id="explore-panel" type="button">
+				<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px"
+					 height="80px" viewBox="0 0 100 80" style="enable-background:new 0 0 100 80;" xml:space="preserve">
+				<defs>
+				</defs>
+				<g>
+					<path d="M98.41,15.12L75.05,0.49c-1.04-0.65-2.33-0.65-3.37,0L50,14.07L28.32,0.49c-1.04-0.65-2.33-0.65-3.37,0L1.59,15.12
+						C0.6,15.74,0,16.85,0,18.05v58.54c0,1.23,0.63,2.37,1.66,2.97c1.02,0.61,2.28,0.59,3.29-0.04l21.68-13.58l21.68,13.58
+						c1.04,0.65,2.33,0.65,3.37,0l21.68-13.58l21.68,13.58c0.52,0.32,1.1,0.49,1.68,0.49c0.56,0,1.11-0.15,1.61-0.44
+						c1.03-0.61,1.66-1.74,1.66-2.97V18.05C100,16.85,99.4,15.74,98.41,15.12z M23.37,60.02L6.54,70.55V19.98L23.37,9.44V60.02z
+						 M46.73,70.55L29.91,60.02V9.44l16.82,10.54V70.55z M70.09,60.02L53.27,70.55V19.98L70.09,9.44V60.02z M93.46,70.55L76.64,60.02
+						V9.44l16.82,10.54V70.55z"/>
+				</g>
+				</svg>
+			</button>
+			<button id="nav-search" data-id="search-panel" type="button">
+				<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="79px"
+					 height="79px" viewBox="0 0 79 79" style="enable-background:new 0 0 79 79;" xml:space="preserve">
+				<defs>
+				</defs>
+				<g>
+					<path d="M77.22,66.84L58.33,47.94c2.85-4.68,4.49-10.18,4.49-16.06C62.82,14.8,48.02,0,30.93,0C13.85,0,0,13.85,0,30.93
+						s14.8,31.88,31.88,31.88c5.68,0,11-1.54,15.57-4.21l19,19c1.86,1.86,4.87,1.86,6.73,0l4.71-4.71
+						C79.76,71.04,79.08,68.7,77.22,66.84z M9.52,30.93c0-11.83,9.59-21.42,21.41-21.42c11.83,0,22.37,10.54,22.37,22.37
+						c0,11.83-9.59,21.42-21.42,21.42C20.06,53.3,9.52,42.76,9.52,30.93z"/>
+				</g>
+				</svg>
+			</button>
+			<button id="nav-list" data-id="list-panel" type="button">
+				<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="70px"
+					 height="50px" viewBox="0 0 70 50" style="enable-background:new 0 0 70 50;" xml:space="preserve">
+				<defs>
+				</defs>
+				<path d="M10,40H5c-2.76,0-5,2.24-5,5c0,2.76,2.24,5,5,5h5c2.76,0,5-2.24,5-5C15,42.24,12.76,40,10,40z M10,20H5c-2.76,0-5,2.24-5,5
+					c0,2.76,2.24,5,5,5h5c2.76,0,5-2.24,5-5C15,22.24,12.76,20,10,20z M10,0H5C2.24,0,0,2.24,0,5c0,2.76,2.24,5,5,5h5c2.76,0,5-2.24,5-5
+					C15,2.24,12.76,0,10,0z M30,10h35c2.76,0,5-2.24,5-5c0-2.76-2.24-5-5-5H30c-2.76,0-5,2.24-5,5C25,7.76,27.24,10,30,10z M65,20H30
+					c-2.76,0-5,2.24-5,5c0,2.76,2.24,5,5,5h35c2.76,0,5-2.24,5-5C70,22.24,67.76,20,65,20z M65,40H30c-2.76,0-5,2.24-5,5
+					c0,2.76,2.24,5,5,5h35c2.76,0,5-2.24,5-5C70,42.24,67.76,40,65,40z"/>
+				</svg>
+			</button>
 		</nav>
 		
 		<aside id="search-panel" class="side-panel">
-			<form></form>
+			<form>
+				<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
+				<svg class="search-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="79px"
+					 height="79px" viewBox="0 0 79 79" style="enable-background:new 0 0 79 79;" xml:space="preserve">
+				<defs>
+				</defs>
+				<g>
+					<path d="M77.22,66.84L58.33,47.94c2.85-4.68,4.49-10.18,4.49-16.06C62.82,14.8,48.02,0,30.93,0C13.85,0,0,13.85,0,30.93
+						s14.8,31.88,31.88,31.88c5.68,0,11-1.54,15.57-4.21l19,19c1.86,1.86,4.87,1.86,6.73,0l4.71-4.71
+						C79.76,71.04,79.08,68.7,77.22,66.84z M9.52,30.93c0-11.83,9.59-21.42,21.41-21.42c11.83,0,22.37,10.54,22.37,22.37
+						c0,11.83-9.59,21.42-21.42,21.42C20.06,53.3,9.52,42.76,9.52,30.93z"/>
+				</g>
+				</svg>
+				<input id="search-input" type="search" placeholder="Search by name, address, or location" />
+				
+				<button class="clear-search" type="button">
+					<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="84px"
+						 height="84px" viewBox="0 0 84 84" style="enable-background:new 0 0 84 84;" xml:space="preserve">
+					<defs>
+					</defs>
+					<g>
+						<path d="M42,0C18.8,0,0,18.81,0,42c0,23.2,18.8,42,42,42c23.19,0,42-18.8,42-42C84,18.81,65.19,0,42,0z M50.64,42l15.3,15.3
+							l-8.64,8.64L42,50.64l-15.3,15.3l-8.64-8.64L33.36,42l-15.3-15.3l8.64-8.65L42,33.36l15.3-15.3l8.64,8.64L50.64,42z"/>
+					</g>
+					</svg>
+				</button>
+			</form>
 			<ul id="search-panel-results"></ul>				
 		</aside>
 		
@@ -57,7 +124,9 @@
 	
 	
 	<script id="single-search-tmpl" type="text/x-handlebars-template">
-		<li><img src="{{ icon }}" />{{ location }}</li>
+		{{#each venues}}
+			<li data-lat="{{ location.lat }}" data-lon="{{ location.lng }}"><img src="" alt="icon" />{{ name }}</li>
+		{{/each}}
 	</script>
 	
 	<script id="list-location-tmpl" type="text/x-handlebars-template">
@@ -90,10 +159,12 @@
     <script src="./js/handlebars/handlebars-v4.0.12.js" crossorigin="anonymous"></script>
     <script src="./js/bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="./js/chartjs/Chart.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="./js/mottie/js/jquery.keyboard.min.js" crossorigin="anonymous"></script>
     
     <script src="./js/Utils.js" crossorigin="anonymous"></script>
     <script src="./js/UI.js" crossorigin="anonymous"></script>
     <script src="./js/Data.js" crossorigin="anonymous"></script>
+    <script src="./js/Search.js" crossorigin="anonymous"></script>
     <script src="./js/App.js" crossorigin="anonymous"></script>
 </body>
 </html>

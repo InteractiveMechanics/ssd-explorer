@@ -13,7 +13,7 @@ UI = (function() {
 		    container: 'map',
 		    style: 'mapbox://styles/mapbox/light-v9',
 		    zoom: 12,
-			center: [-75.1204122, 39.9550073]
+			center: [-75.1592545, 39.9502404]
 		});
 		
 		// WHEN THE MAP LOADS
@@ -34,6 +34,7 @@ UI = (function() {
     var closePanels = function() {
 	    $('.side-panel').removeClass('active');
 	    $('nav').removeClass('active');
+	    $('nav button').removeClass('active');
 	    $(this).addClass('active');
     }
     
@@ -47,9 +48,11 @@ UI = (function() {
 	    if (!isActive) {
 	    	$('#' + id).addClass('active');
 	    	$('nav').addClass('active');
+	    	$('button[data-id="' + id + '"').addClass('active');
 	    } else {
 		    $('#' + id).removeClass('active');
 		    $('nav').removeClass('active');
+		    $('button[data-id="' + id + '"').removeClass('active');
 	    }
     }
     

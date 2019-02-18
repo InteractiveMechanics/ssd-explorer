@@ -6,6 +6,13 @@ main {
 	    width: 100vw;
 		height: 100vh;
 		position: absolute;
+		
+		.mapboxgl-ctrl-logo {
+			pointer-events: none;
+		}
+		.mapboxgl-ctrl-attrib {
+			display: none;
+		}
     }
     
     nav {
@@ -24,12 +31,45 @@ main {
 		    display: block;
 		    margin: 20px;
 		    height: 90px;
+		    width: 90px;
 		    padding: 15px;
+		    background: rgba(0,0,0,0.85);
+		    border: none;
+		    transition: 0.5s all;
+		    
+		    svg {
+			    width: 100%;
+			    height: auto;
+			    
+			    path {
+				    fill: white;
+			    }
+		    }
+		    
+		    &.active {
+			    opacity: 0.5;
+		    }
+		    
+		    &#nav-explorer {
+			    svg {
+			    	width: 90%;
+			    }
+		    }
+		    &#nav-search {
+			    svg {
+			    	width: 80%;
+			    }
+		    }
+		    &#nav-list {
+			    svg {
+			    	width: 80%;
+			    }
+		    }
 	    }
     }
     
     aside {
-		background: rgba(0,0,0,0.65);
+		background: rgba(0,0,0,0.85);
 		height: 100vh;
 		width: 33vw;
 	    position: absolute;
@@ -42,6 +82,13 @@ main {
 	    &.active {
 		    transform: translateX(0);
 	    }
+	    
+	    h1 {
+	    	border-bottom: 1px solid gray;
+			padding: 24px 20px 25px;
+			letter-spacing: -1px;
+			margin-bottom: 20px;
+		}
 	}
 }
 

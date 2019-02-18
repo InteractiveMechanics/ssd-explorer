@@ -16,6 +16,7 @@ $(function(){
 		Utilities.init();
 		Data.init();
 		UI.init();
+		Search.init();
 		
 	}, 'json');
 
