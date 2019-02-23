@@ -12,7 +12,7 @@
 
     <title>Explore the Epidemic - Spit Spreads Death</title>
 </head>
-<body class="">
+<body class="kiosk">
 	<div id="intro" class="fade show">
 		<h1>Explore the Epidemic</h1>
 		<h2>See how the 1918-19 influenza epidemic affected the citizens and neighborhoods of Philadelphia.</h2>
@@ -134,7 +134,9 @@
 	</script>
 	
 	<script id="list-neighborhood-tmpl" type="text/x-handlebars-template">
-		<li>{{ neighborhood }}</li>
+		{{#each .}}
+			<li data-lat="{{ lat }}" data-lon="{{ lon }}">{{ title }}</li>
+		{{/each}}
 	</script>
 	
 	<script id="single-neighborhood-tmpl" type="text/x-handlebars-template">
@@ -146,9 +148,12 @@
 		<p>{{ about_neighborhood }}</p>
 	</script>
 	
-	<script id="single-point-tmpl" type="text/x-handlebars-template">
-		<h1>{{ title }}</h1>
-		{{ content }}
+	<script id="single-poi-tmpl" type="text/x-handlebars-template">
+		<h1>
+			{{ title }}
+			<small>{{ address }}</small>
+		</h1>
+		{{{ content }}}
 	</script>
 	
 

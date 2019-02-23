@@ -4,19 +4,26 @@
  */
 
 
-var data = function(){};
+var data_poi = function(){};
+var data_neighborhoods = function(){};
 
 $(function(){
 
-	var uri = './cache/data.json';
+	var uri = './cache/data_poi.json';
 
 	$.getJSON(uri, function(response, status, jqXHR) {
-		data = response;
-
-		Utilities.init();
-		Data.init();
-		UI.init();
-		Search.init();
+		data_poi = response;
+		
+		var uri = './cache/data_neighborhoods.json';
+		
+		$.getJSON(uri, function(response, status, jqXHR) {
+			data_neighborhoods = response;
+	
+			Utilities.init();
+			Data.init();
+			UI.init();
+			Search.init();
+		}, 'json');
 		
 	}, 'json');
 

@@ -112,14 +112,15 @@ main {
 	}
 	
 	.footer {
+		.kiosk & {
+			display: none;
+		}
+		
 		address {
 			color: white;
 			
 			.btn {
 				color: black;
-			}
-			.kiosk & {
-				display: none;
 			}
 		}
 	}

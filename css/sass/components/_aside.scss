@@ -1,8 +1,59 @@
 main {
 	aside {
+		overflow: auto;
+		
 		h1 {
 			color: white;
 			font-size: 2rem;
+			
+			small {
+				display: block;
+				font-size: 60%;
+			}
+		}
+		
+		.item-list {
+			padding: 0 20px 30px;
+			
+			ol {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				
+				li {
+					color: white;
+					margin-bottom: 40px;
+					border-bottom: 1px solid #999;
+					padding-bottom: 20px;
+					
+					&:last-of-type {
+						border-bottom: 0;
+						margin-bottom: 0;
+					}
+				}
+			}
+			
+			.field__label,
+			.field--name-created,
+			.field--name-uid,
+			.field--name-thumbnail {
+				display: none;
+			}
+			
+			.paragraph--type--blockquote {
+				padding-left: 30px;
+			}
+			.field--name-field-blockquote- {
+				&:before {
+					content: "\2014";
+				}
+			}
+			.field--name-field-media-image-caption {
+				
+			}
+			.field--name-field-media-image-credit {
+				
+			}
 		}
 	}
 }

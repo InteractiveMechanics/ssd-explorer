@@ -134,12 +134,12 @@ main {
     margin-bottom: 40px; }
   #intro h2 {
     margin-bottom: 120px; }
+  .kiosk #intro .footer {
+    display: none; }
   #intro .footer address {
     color: white; }
     #intro .footer address .btn {
       color: black; }
-    .kiosk #intro .footer address {
-      display: none; }
 
 #search-panel form {
   width: 100%;
@@ -206,8 +206,39 @@ main {
       font-size: 1rem;
       vertical-align: bottom; }
 
-main aside h1 {
-  color: white;
-  font-size: 2rem; }
+#explore-panel ul li {
+  color: white; }
+
+main aside {
+  overflow: auto; }
+  main aside h1 {
+    color: white;
+    font-size: 2rem; }
+    main aside h1 small {
+      display: block;
+      font-size: 60%; }
+  main aside .item-list {
+    padding: 0 20px 30px; }
+    main aside .item-list ol {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+      main aside .item-list ol li {
+        color: white;
+        margin-bottom: 40px;
+        border-bottom: 1px solid #999;
+        padding-bottom: 20px; }
+        main aside .item-list ol li:last-of-type {
+          border-bottom: 0;
+          margin-bottom: 0; }
+    main aside .item-list .field__label,
+    main aside .item-list .field--name-created,
+    main aside .item-list .field--name-uid,
+    main aside .item-list .field--name-thumbnail {
+      display: none; }
+    main aside .item-list .paragraph--type--blockquote {
+      padding-left: 30px; }
+    main aside .item-list .field--name-field-blockquote-:before {
+      content: "\2014"; }
 
 /*# sourceMappingURL=main.css.map */

@@ -4,6 +4,12 @@ UI = (function() {
 	var map;
 	var ctx;
 	
+	var source_single_neighborhood   = document.getElementById("list-neighborhood-tmpl").innerHTML;
+	var template_single_neighborhood = Handlebars.compile(source_single_neighborhood);
+	
+	var source_single_poi   = document.getElementById("single-poi-tmpl").innerHTML;
+	var template_single_poi = Handlebars.compile(source_single_poi);
+	
 	var init = function() {
 		
 		// BUILD THE BASIC MAP
@@ -18,10 +24,38 @@ UI = (function() {
 		
 		// WHEN THE MAP LOADS
 		map.on('load', function () {
+			// LOAD THE GEOJSON FROM DATA.CLEANPOIDATA
+			map.addSource('poi', {
+				"type": "geojson",
+				"data": Data.cleanPoiData
+			});
 			
+			// ADD THE DATA AS A LAYER
+			// AND STYLE THE POINTS, TEMPORARY
+			map.addLayer({
+				'id': 'poi-circles',
+				'type': 'circle',
+				'source': 'poi',
+				'paint': {
+					'circle-color': '#FF0000',
+					'circle-opacity': 1,
+					'circle-radius': 10
+				}
+			});
+		});
+		
+		map.on('click', 'poi-circles', function (e) {
+			var coords = e.features[0].geometry.coordinates.slice();
+			var content = e.features[0].properties.content;
+			var address = e.features[0].properties.address;
+			var type = e.features[0].properties.type;
+			var title = e.features[0].properties.title;
+			
+			openDetailPanel(title, type, address, content);
 		});
 		
         bindEvents();
+        loadNeighborhoods();
     }
     
     var bindEvents = function() {
@@ -29,6 +63,8 @@ UI = (function() {
 	    
 	    $(document).on('click tap drag', '#intro-search', openPanel);
 	    $(document).on('click tap drag', '#intro-explore', openPanel);
+	    
+	    $(document).on('click tap drag', '#explore-panel-neighborhoods li', clickNeighborResult);
     }
     
     var closePanels = function() {
@@ -70,6 +106,25 @@ UI = (function() {
 	    }, 500);
     }
     
+    var openDetailPanel = function(title, type, address, content) {
+	    closePanels();
+	    	    
+	    var html = template_single_poi({ "title": title, "type": type, "address": address, "content": content });
+		$('#detail-panel').html(html).addClass('active');
+    }
+    
+    var loadNeighborhoods = function() {
+	    var html = template_single_neighborhood(data_neighborhoods);
+		$('#explore-panel-neighborhoods').html(html);
+    }
+    
+    var clickNeighborResult = function() {
+	    var lat = $(this).data('lat');
+	    var lon = $(this).data('lon');
+	    
+	    UI.moveMapToLatLon(lat, lon, 14);
+    }
+    
     var moveMapToLatLon = function(lat, lon, zoom) {
 	    map.flyTo({
 		    // These options control the ending camera position: centered at
@@ -81,7 +136,7 @@ UI = (function() {
 			// These options control the flight curve, making it move
 			// slowly and zoom out almost completely before starting
 			// to pan.
-			speed: 1,
+			speed: 2,
 			curve: 1,
 			 
 			// This can be any easing function: it takes a number between
