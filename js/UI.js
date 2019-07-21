@@ -4,11 +4,17 @@ UI = (function() {
 	var map;
 	var ctx;
 	
-	var source_single_neighborhood   = document.getElementById("list-neighborhood-tmpl").innerHTML;
-	var template_single_neighborhood = Handlebars.compile(source_single_neighborhood);
+	var source_list_neighborhood   = document.getElementById("list-neighborhood-tmpl").innerHTML;
+	var template_list_neighborhood = Handlebars.compile(source_list_neighborhood);
+	
+	var source_list_poi   = document.getElementById("list-location-tmpl").innerHTML;
+	var template_list_poi = Handlebars.compile(source_list_poi);
 	
 	var source_single_poi   = document.getElementById("single-poi-tmpl").innerHTML;
 	var template_single_poi = Handlebars.compile(source_single_poi);
+	
+	var source_single_neighborhood   = document.getElementById("single-neighborhood-tmpl").innerHTML;
+	var template_single_neighborhood = Handlebars.compile(source_single_neighborhood);
 	
 	var init = function() {
 		
@@ -18,6 +24,7 @@ UI = (function() {
 		map = new mapboxgl.Map({
 		    container: 'map',
 		    style: 'mapbox://styles/mapbox/light-v9',
+		    minZoom: 10,
 		    zoom: 12,
 			center: [-75.1592545, 39.9502404]
 		});
@@ -51,11 +58,12 @@ UI = (function() {
 			var type = e.features[0].properties.type;
 			var title = e.features[0].properties.title;
 			
-			openDetailPanel(title, type, address, content);
+			openDetailPanel(title, type, address, content, coords[1], coords[0]);
 		});
 		
         bindEvents();
         loadNeighborhoods();
+        loadPoiList();
     }
     
     var bindEvents = function() {
@@ -80,6 +88,7 @@ UI = (function() {
 	    	    	    
 	    closePanels();
 	    closeAttract();
+	    scrollToTopOfPanel();
 	    	    
 	    if (!isActive) {
 	    	$('#' + id).addClass('active');
@@ -106,16 +115,34 @@ UI = (function() {
 	    }, 500);
     }
     
-    var openDetailPanel = function(title, type, address, content) {
+    var openDetailPanel = function(title, type, address, content, lat, lon) {
 	    closePanels();
+	    scrollToTopOfPanel();
+	    $('nav').addClass('active');
 	    	    
 	    var html = template_single_poi({ "title": title, "type": type, "address": address, "content": content });
 		$('#detail-panel').html(html).addClass('active');
+		
+		var gallery = $('#detail-panel').find('.paragraph--type--gallery');
+		if (gallery) {
+			gallery.find('.field__items').slick({
+				dots: true,
+				infinite: true,
+				fade: true
+			});
+		}
+		
+		UI.moveMapToLatLon(lat, lon, 16);
     }
     
     var loadNeighborhoods = function() {
-	    var html = template_single_neighborhood(data_neighborhoods);
+	    var html = template_list_neighborhood(data_neighborhoods);
 		$('#explore-panel-neighborhoods').html(html);
+    }
+    
+    var loadPoiList = function() {
+	    var html = template_list_poi(data_poi);
+		$('#list-panel-locations').html(html);
     }
     
     var clickNeighborResult = function() {
@@ -123,6 +150,17 @@ UI = (function() {
 	    var lon = $(this).data('lon');
 	    
 	    UI.moveMapToLatLon(lat, lon, 14);
+	    
+	    closePanels();
+	    scrollToTopOfPanel();
+	    $('nav').addClass('active');
+	    
+	    var html = template_single_neighborhood({});
+		$('#detail-panel').html(html).addClass('active');
+    }
+    
+    var scrollToTopOfPanel = function() {
+	    $('.side-panel').animate({ scrollTop: 0 }, "fast");
     }
     
     var moveMapToLatLon = function(lat, lon, zoom) {

@@ -48,11 +48,54 @@ main {
 					content: "\2014";
 				}
 			}
+			
+			.field--name-field-media-image {
+				width: 100%;
+				height: 400px;
+				margin-bottom: 10px;
+				
+				img {
+					display: block;
+				    margin: 0 auto;
+				    max-width: 100%;
+				    max-height: 400px;
+				}
+			}
 			.field--name-field-media-image-caption {
 				
 			}
 			.field--name-field-media-image-credit {
 				
+			}
+		}
+		
+		.slick-slider {
+			.field__item .media {
+				display: block;
+			}
+			.slick-arrow {
+				position: absolute;
+			    z-index: 9;
+			    top: 190px;
+				
+				&.slick-prev {
+					
+				}
+				&.slick-next {
+					right: 0;
+				}
+			}
+			.slick-dots {
+			    margin: 0;
+				padding: 0;
+				text-align: center;
+				
+				li {
+					margin: 0;
+				    padding: 0;
+				    border: 0;
+				    display: inline-block;
+				}
 			}
 		}
 	}
