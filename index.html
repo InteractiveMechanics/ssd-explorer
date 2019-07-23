@@ -132,7 +132,11 @@
 	
 	<script id="list-location-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
-			<li data-lat="{{ lat }}" data-lon="{{ lon }}"><img src="{{ type }}" />{{ title }}</li>
+			<li data-lat="{{ lat }}" data-lon="{{ lon }}">
+			{{#if_eq type 'Landmark'}} <img src="./assets/icon-circle-landmark.svg" />{{ title }}</li> {{/if_eq}}
+			{{#if_eq type 'Community Story'}} <img src="./assets/icon-circle-story.svg" />{{ title }}</li> {{/if_eq}}
+			{{#if_eq type 'Hospital'}} <img src="./assets/icon-circle-hospital.svg" />{{ title }}</li> {{/if_eq}}
+			{{#if_eq type 'Death Certificate'}} <img src="./assets/icon-circle-deathrecord.svg" />{{ title }}</li> {{/if_eq}}
 		{{/each}}
 	</script>
 	
@@ -143,57 +147,9 @@
 	</script>
 	
 	<script id="single-neighborhood-tmpl" type="text/x-handlebars-template">
-		<h1>South Philadelphia</h1>
+		<h1>{{ title }}</h1>
 		
-		<div class="item-list"><ol><li>
-			<h2>The Horrid Jackals of Influenza</h2>
-			<p>Wailing, shrieking, misery, squalor, death… and doctors and undertakers and cemeteries and pharmacists… extort as much as they can from terrified survivors.</p>
-	        <p>—La Libera Parola, Philadelphia, November 2, 1918</p>
-			<p>This editorial from an Italian-language newspaper was a savage attack on the “horrid jackals” who profited from the influenza pandemic.</p>
-			<p>Poverty, overcrowding, and poor sanitation, along with a lack of medical and nursing care, contributed to high infection and death rates throughout the immigrant communities of South Philadelphia.</p>
-			<p>Catholic Sisters who visited homes to nurse the sick reported squalid conditions. Many families lacked food, fuel, bedlinens, or medicine that could calm their fevers and coughs.</p>
-			
-			<h2>South Philadelphia Then</h2>
-			<img src="./assets/chart-0.png" />
-			<p>Population of Wards 1–4, in the northern part of South Philadelphia, 1920</p>
-			<p>Ethnic and race categories used in 1920 census:</p>
-			<ul>
-				<li>Native white – Native white parentage</li>
-				<li>Native white – Foreign or mixed parentage</li>
-				<li>Foreign-born white</li>
-				<li>Negro</li>
-				<li>Indian, Chinese, Japanese, and all others</li>
-			</ul>
-			<p><em>Source: Fourteenth Census of the United States [1920]: State Compendium, Pennsylvania, 1924</em></p>
-	
-	
-			<h2>South Philadelphia Now</h2>
-			<img src="./assets/chart-1.png" />
-			<p>Population of northern part of South Philadelphia (zip code 19147), 2017 estimates</p>
-			<p>Ethnic and race categories currently used in U.S. Census:</p>
-			<ul>
-				<li>White alone, not Hispanic or Latino</li>
-				<li>Black or African American alone</li>
-				<li>Asian alone</li>
-				<li>Hispanic or Latino (of any race)</li>
-				<li>American Indian and Alaska Native alone</li>
-				<li>Some other race alone</li>
-				<li>Two or more races</li>
-			</ul>
-			<p><em>Source: U.S. Census Bureau, 2013–2017 American Community Survey 5-Year Estimates</em></p>
-	
-			<h2>A Neighborhood of Immigrants</h2>		
-			<p>In 1918, people from all over lived in the northern part of South Philadelphia: Italians, Irish, Eastern European Jews, African Americans, and more. About 85% of residents were foreign-born or had at least one foreign-born parent.</p>
-			<p>Every ethnic group and subgroup had their own businesses and places of worship. Working people were crammed into small rowhouses, often sharing toilets and running water with many other families.</p>
-			<p>The area had a rough reputation. In July 1918, whites attacked African Americans, sparking a four-day race riot that killed three people and injured hundreds.</p>
-	
-			<hr/>
-			
-			<h2>New Immigrants in an Old Neighborhood</h2>
-			<p>Today, South Philadelphia is famed as the home of the Italian Market and the site of iconic scenes from the Rocky movies.</p>
-			<p>While Italians still have a major cultural and economic presence in the area, new immigrant groups have moved in over the past decades.</p>
-			<p>People from Southeast Asia and from Mexico and Central America are making their mark with restaurants and other businesses, places of worship, and cultural centers.</p>
-		</li></ol></div>
+		{{{ content }}}
 	</script>
 	
 	<script id="single-poi-tmpl" type="text/x-handlebars-template">
@@ -201,6 +157,7 @@
 			{{ title }}
 			<small>{{ address }}</small>
 		</h1>
+		
 		{{{ content }}}
 	</script>
 	

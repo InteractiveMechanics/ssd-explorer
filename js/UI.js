@@ -37,28 +37,76 @@ UI = (function() {
 				"data": Data.cleanPoiData
 			});
 			
+			// LOAD THE GEOJSON FROM DATA.CLEANDATA
+			map.addSource('deaths', {
+				"type": "geojson",
+				"data": Data.cleanRecordData
+			});
+			
+			map.addSource('boundaries', {
+				"type": "geojson",
+				"data": data_boundaries
+			});
+			
 			// ADD THE DATA AS A LAYER
-			// AND STYLE THE POINTS, TEMPORARY
+			// AND STYLE THE POINTS
 			map.addLayer({
-				'id': 'poi-circles',
+				'id': 'death-circles',
 				'type': 'circle',
-				'source': 'poi',
+				'source': 'deaths',
+				"minzoom": 16,
 				'paint': {
 					'circle-color': '#FF0000',
-					'circle-opacity': 1,
-					'circle-radius': 10
+					'circle-opacity': 0.2,
+					'circle-radius': 5
 				}
 			});
-		});
-		
-		map.on('click', 'poi-circles', function (e) {
-			var coords = e.features[0].geometry.coordinates.slice();
-			var content = e.features[0].properties.content;
-			var address = e.features[0].properties.address;
-			var type = e.features[0].properties.type;
-			var title = e.features[0].properties.title;
 			
-			openDetailPanel(title, type, address, content, coords[1], coords[0]);
+			map.addLayer({
+				'id': 'neighborhood-boundaries',
+				'type': 'line',
+				'source': 'boundaries',
+				'paint': {
+					'line-color': '#4A3323',
+					'line-opacity': 0.25,
+					'line-width': 2,
+					'line-dasharray': [4, 3]
+				}
+			});
+			
+			Data.cleanPoiData.features.forEach(function(marker) {
+				var term = marker.properties.type;
+				var el = document.createElement('div');
+				
+				if (term == 'Community Story') {
+					el.style.backgroundImage = 'url(./assets/icon-story.svg)';
+				} else if (term == 'Landmark') {
+					el.style.backgroundImage = 'url(./assets/icon-landmark.svg)';
+				} else if (term == 'Hospital') {
+					el.style.backgroundImage = 'url(./assets/icon-hospital.svg)';
+				} else if (term == 'Death Certificate') {
+					el.style.backgroundImage = 'url(./assets/icon-deathrecord.svg)';
+				}
+				
+				// create a DOM element for the marker
+				el.className = 'marker';
+				el.style.width = '42.5px';
+				el.style.height = '50px';
+				el.style.backgroundSize = 'cover';
+			 
+				el.addEventListener('click', function() {					
+					var coords = marker.geometry.coordinates.slice();
+					var content = marker.properties.content;
+					var address = marker.properties.address;
+					var type = marker.properties.type;
+					var title = marker.properties.title;
+					
+					openDetailPanel(title, type, address, content, coords[1], coords[0]);
+				});
+			 
+				// add marker to map
+				new mapboxgl.Marker(el).setLngLat(marker.geometry.coordinates).addTo(map);
+			});
 		});
 		
         bindEvents();
@@ -155,7 +203,7 @@ UI = (function() {
 	    scrollToTopOfPanel();
 	    $('nav').addClass('active');
 	    
-	    var html = template_single_neighborhood({});
+	    var html = template_single_neighborhood();
 		$('#detail-panel').html(html).addClass('active');
     }
     
