@@ -25,8 +25,13 @@ UI = (function() {
 		    container: 'map',
 		    style: 'mapbox://styles/mapbox/light-v9',
 		    minZoom: 10,
-		    zoom: 12,
-			center: [-75.1592545, 39.9502404]
+		    zoom: 11.2,
+			center: [-75.1592545, 39.9502404],
+			minZoom: 11.2,
+			maxBounds: [
+				[-75.57334745185173, 39.50731121765379], // Southwest coordinates {"lng":-75.37334745185173,"lat":39.80731121765379}
+				[-74.74090421442446, 40.1510792131933]  // Northeast coordinates {"lng":-74.74090421442446,"lat":40.1510792131933}
+			]
 		});
 		
 		// WHEN THE MAP LOADS

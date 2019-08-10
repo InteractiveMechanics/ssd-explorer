@@ -79,14 +79,14 @@ main {
     transition: 0.5s all;
     transform: translateX(0); }
     main nav.active {
-      transform: translateX(33vw); }
+      transform: translateX(40vw); }
     main nav button {
       display: block;
       margin: 20px;
       height: 90px;
       width: 90px;
       padding: 15px;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(74, 51, 35, 0.9);
       border: none;
       transition: 0.5s all; }
       main nav button svg {
@@ -96,22 +96,22 @@ main {
           fill: white; }
       main nav button.active {
         opacity: 0.5; }
-      main nav button#nav-explorer svg {
-        width: 90%; }
+      main nav button#nav-explore svg {
+        width: 80%; }
       main nav button#nav-search svg {
         width: 80%; }
       main nav button#nav-list svg {
         width: 80%; }
   main aside {
-    background: rgba(74, 51, 35, 0.85);
+    background: rgba(74, 51, 35, 0.9);
     height: 100vh;
-    width: 33vw;
+    width: 40vw;
     position: absolute;
     left: 0;
     top: 0;
     z-index: 9;
     transition: 0.5s all;
-    transform: translateX(-33vw); }
+    transform: translateX(-40vw); }
     main aside.active {
       transform: translateX(0); }
     main aside h1 {
@@ -120,26 +120,38 @@ main {
       margin-bottom: 0;
       letter-spacing: 0; }
 
-#intro {
+#intro,
+#outro {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(90deg, rgba(74, 51, 35, 0.75) 0%, rgba(165, 169, 58, 0.9) 100%);
   z-index: 999;
   text-align: center;
-  padding: 300px 200px; }
-  #intro h1, #intro h2, #intro h3 {
+  padding: 300px 200px;
+  pointer-events: none; }
+  #intro.show,
+  #outro.show {
+    pointer-events: auto; }
+  #intro h1, #intro h2, #intro h3,
+  #outro h1,
+  #outro h2,
+  #outro h3 {
     color: white; }
-  #intro h1 {
+  #intro h1,
+  #outro h1 {
     margin-bottom: 40px; }
-  #intro h2 {
+  #intro h2,
+  #outro h2 {
     margin-bottom: 120px; }
-  .kiosk #intro .footer {
-    display: none; }
-  #intro .footer address {
-    color: white; }
-    #intro .footer address .btn {
-      color: black; }
+  #intro button,
+  #outro button {
+    background-color: white;
+    border: none;
+    font-size: 1.4rem;
+    padding: 1rem 2.4rem;
+    color: #A5AA3A;
+    margin: 0 10px; }
 
 #search-panel form {
   width: 100%;

@@ -24,7 +24,7 @@ main {
 	    transform: translateX(0);
 	    
 	    &.active {
-		    transform: translateX(33vw);
+		    transform: translateX(40vw);
 	    }
 	    
 	    button {
@@ -33,7 +33,7 @@ main {
 		    height: 90px;
 		    width: 90px;
 		    padding: 15px;
-		    background: rgba(0,0,0,0.85);
+		    background: rgba(#4A3323, 0.9);
 		    border: none;
 		    transition: 0.5s all;
 		    
@@ -50,9 +50,9 @@ main {
 			    opacity: 0.5;
 		    }
 		    
-		    &#nav-explorer {
+		    &#nav-explore {
 			    svg {
-			    	width: 90%;
+			    	width: 80%;
 			    }
 		    }
 		    &#nav-search {
@@ -69,15 +69,15 @@ main {
     }
     
     aside {
-		background: rgba(#4A3323, 0.85);
+		background: rgba(#4A3323, 0.9);
 		height: 100vh;
-		width: 33vw;
+		width: 40vw;
 	    position: absolute;
 	    left: 0;
 	    top: 0;
 	    z-index: 9;
 	    transition: 0.5s all;
-	    transform: translateX(-33vw);
+	    transform: translateX(-40vw);
 	    
 	    &.active {
 		    transform: translateX(0);
@@ -92,14 +92,20 @@ main {
 	}
 }
 
-#intro {
+#intro,
+#outro {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	background: rgba(0,0,0,0.65);
+	background: linear-gradient(90deg, rgba(74,51,35,0.75) 0%, rgba(165,169,58,0.9) 100%);
 	z-index: 999;
 	text-align: center;
 	padding: 300px 200px;
+	pointer-events: none;
+	
+	&.show {
+		pointer-events: auto;
+	}
 	
 	h1, h2, h3 {
 		color: white;
@@ -110,18 +116,12 @@ main {
 	h2 {
 		margin-bottom: 120px;
 	}
-	
-	.footer {
-		.kiosk & {
-			display: none;
-		}
-		
-		address {
-			color: white;
-			
-			.btn {
-				color: black;
-			}
-		}
+	button {
+		background-color: white;
+		border: none;
+		font-size: 1.4rem;
+		padding: 1rem 2.4rem;
+		color: #A5AA3A;
+		margin: 0 10px;
 	}
 }
