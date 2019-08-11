@@ -4,7 +4,7 @@
 	$url_nabe = "/spit-spreads-death/cms/api/explorer/neighborhoods?_format=json";
 	$url_poi = "/spit-spreads-death/cms/api/explorer/points?_format=json";
 	
-	$result = array();	
+	$result = array();
 	
 	function getJsonData($url, $file, $message) {
 		
@@ -21,6 +21,12 @@
 			
 			$temp_decode_result = json_decode($temp_result);
 			$result = array_merge($result, $temp_decode_result);
+			
+			/*
+			foreach ($result as &$str) {
+			    $str->content = str_replace('/spit-spreads-death/cms/sites/default/files/2019-07/', './cache/images/', $str->content);
+			}
+			*/
 			
 			fwrite($fp, print_r(json_encode($temp_decode_result), TRUE));
 			print_r($message);

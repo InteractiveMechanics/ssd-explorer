@@ -3,6 +3,12 @@
 	user-select: none;
 }
 
+.kiosk * {
+	&:focus {
+		outline: none !important;
+	}
+}
+
 h1 {
 	font-size: 9rem;
 	font-weight: 700;

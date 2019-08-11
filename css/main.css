@@ -28,6 +28,9 @@
   font-family: 'PT Sans', sans-serif;
   user-select: none; }
 
+.kiosk *:focus {
+  outline: none !important; }
+
 h1 {
   font-size: 9rem;
   font-weight: 700;
@@ -59,6 +62,17 @@ h4 {
   padding: .5rem 1.5rem .5rem;
   text-transform: uppercase;
   letter-spacing: 1px; }
+
+.lg .lg-next:before, .lg .lg-next:after,
+.lg .lg-prev:before,
+.lg .lg-prev:after {
+  content: ''; }
+.lg .lg-next svg,
+.lg .lg-prev svg {
+  width: 50px; }
+  .lg .lg-next svg path,
+  .lg .lg-prev svg path {
+    fill: white; }
 
 main {
   width: 100vw;
@@ -152,6 +166,9 @@ main {
     padding: 1rem 2.4rem;
     color: #A5AA3A;
     margin: 0 10px; }
+  .kiosk #intro .footer, .kiosk
+  #outro .footer {
+    display: none; }
 
 #search-panel form {
   width: 100%;
@@ -262,7 +279,7 @@ main aside {
       display: block;
       font-size: 60%; }
   main aside .item-list {
-    padding: 30px; }
+    padding: 0 30px 30px; }
     main aside .item-list ol {
       margin: 0;
       padding: 0;
@@ -278,6 +295,8 @@ main aside {
   main aside .field--name-uid,
   main aside .field--name-thumbnail {
     display: none; }
+  main aside .paragraph--type--headline:first-of-type {
+    margin-top: 30px; }
   main aside .paragraph--type--headline .field--name-field-title .field__item {
     font-family: 'Fjalla One', sans-serif;
     font-size: 1.8rem;
@@ -290,33 +309,65 @@ main aside {
     padding-left: 30px; }
     main aside .paragraph--type--blockquote .field--name-field-blockquote-:before {
       content: "\2014"; }
-  main aside .paragraph--type--gallery .field--name-field-media {
+  main aside .paragraph--type--pie-chart .field--name-field-chart-rows {
+    display: none; }
+  main aside .paragraph--type--death-certificate h2 {
+    display: none; }
+  main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record {
+    margin: 30px 0 0; }
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field__item,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field__label {
+      display: inline-block;
+      width: 49%; }
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-file-number,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-register-number,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-address-latitude,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-address-longitude,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-pod-latitude,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-pod-longitude,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-inquest-date,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-display-in-neighborhood-ex,
+    main aside .paragraph--type--death-certificate .field--name-field-death-certificate-record .field--name-field-death-burial-date {
+      display: none; }
+  main aside .field--name-field-death-certificate-image > .media,
+  main aside .field--name-field-death-certificate-image > .field--name-field-media,
+  main aside .paragraph--type--gallery > .media,
+  main aside .paragraph--type--gallery > .field--name-field-media {
+    display: block;
     margin: 0 -30px; }
+  main aside .field--name-field-death-certificate-image .field--name-field-media-image-title,
   main aside .paragraph--type--gallery .field--name-field-media-image-title {
     display: none; }
+  main aside .field--name-field-death-certificate-image .field--name-field-media-image,
   main aside .paragraph--type--gallery .field--name-field-media-image {
     width: 100%;
-    height: 400px;
+    height: 460px;
+    padding: 0 30px;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.5); }
+    main aside .field--name-field-death-certificate-image .field--name-field-media-image img,
     main aside .paragraph--type--gallery .field--name-field-media-image img {
       display: block;
       margin: 0 auto;
       width: auto;
       max-width: 100%;
       max-height: 400px; }
+  main aside .field--name-field-death-certificate-image .field--name-field-media-image-caption,
   main aside .paragraph--type--gallery .field--name-field-media-image-caption {
     margin-bottom: 10px;
     padding: 0 30px; }
+  main aside .field--name-field-death-certificate-image .field--name-field-media-image-credit,
   main aside .paragraph--type--gallery .field--name-field-media-image-credit {
     padding: 0 30px;
     font-size: 0.8rem;
     font-style: italic; }
+  main aside .field--name-field-death-certificate-image .slick-slider .field__item .media,
   main aside .paragraph--type--gallery .slick-slider .field__item .media {
     display: block; }
+  main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow,
   main aside .paragraph--type--gallery .slick-slider .slick-arrow {
     position: absolute;
     z-index: 9;
@@ -325,28 +376,36 @@ main aside {
     opacity: 0.5;
     transition: 0.5s all;
     cursor: pointer; }
+    main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow path,
     main aside .paragraph--type--gallery .slick-slider .slick-arrow path {
       fill: white; }
+    main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow#slick-arrow-prev,
     main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-prev {
       left: 20px; }
+      main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow#slick-arrow-prev:hover,
       main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-prev:hover {
         left: 10px;
         opacity: 1; }
+    main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow#slick-arrow-next,
     main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-next {
       right: 20px; }
+      main aside .field--name-field-death-certificate-image .slick-slider .slick-arrow#slick-arrow-next:hover,
       main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-next:hover {
         right: 10px;
         opacity: 1; }
+  main aside .field--name-field-death-certificate-image .slick-slider .slick-dots,
   main aside .paragraph--type--gallery .slick-slider .slick-dots {
     margin: 0;
     margin-top: 20px;
     padding: 0;
     text-align: center; }
+    main aside .field--name-field-death-certificate-image .slick-slider .slick-dots li,
     main aside .paragraph--type--gallery .slick-slider .slick-dots li {
       margin: 0;
       padding: 0;
       border: 0;
       display: inline-block; }
+      main aside .field--name-field-death-certificate-image .slick-slider .slick-dots li button,
       main aside .paragraph--type--gallery .slick-slider .slick-dots li button {
         width: 16px;
         height: 16px;
@@ -357,8 +416,10 @@ main aside {
         margin: 0 5px;
         background-color: rgba(255, 255, 255, 0.35);
         cursor: pointer; }
+        main aside .field--name-field-death-certificate-image .slick-slider .slick-dots li button[aria-label="1 of 1"],
         main aside .paragraph--type--gallery .slick-slider .slick-dots li button[aria-label="1 of 1"] {
           display: none; }
+      main aside .field--name-field-death-certificate-image .slick-slider .slick-dots li.slick-active button,
       main aside .paragraph--type--gallery .slick-slider .slick-dots li.slick-active button {
         background-color: white; }
 

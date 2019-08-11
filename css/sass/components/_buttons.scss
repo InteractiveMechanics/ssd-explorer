@@ -4,3 +4,20 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.lg {
+	.lg-next,
+	.lg-prev {
+		&:before,
+		&:after {
+			content: '';
+		}
+		
+		svg {
+			width: 50px;
+			
+			path {
+				fill: white;
+			}
+		}
+	}
+}

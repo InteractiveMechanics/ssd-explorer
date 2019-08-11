@@ -13,7 +13,7 @@ main {
 		}
 		
 		.item-list {
-			padding: 30px;
+			padding: 0 30px 30px;
 			
 			ol {
 				margin: 0;
@@ -43,6 +43,10 @@ main {
 		
 		
 		.paragraph--type--headline {
+			&:first-of-type {
+				margin-top: 30px;
+			}
+			
 			.field--name-field-title {
 				.field__item {
 					font-family: 'Fjalla One', sans-serif;
@@ -71,11 +75,42 @@ main {
 		}
 		
 		.paragraph--type--pie-chart {
-			
+			.field--name-field-chart-rows {
+				display: none;
+			}
 		}
 		
+		.paragraph--type--death-certificate {
+			h2 {
+				display: none;
+			}
+			.field--name-field-death-certificate-record {
+				margin: 30px 0 0;
+				
+				.field__item,
+				.field__label {
+					display: inline-block;
+					width: 49%;
+				}
+				.field--name-field-file-number,
+				.field--name-field-register-number,
+				.field--name-field-address-latitude,
+				.field--name-field-address-longitude,
+				.field--name-field-pod-latitude,
+				.field--name-field-pod-longitude,
+				.field--name-field-inquest-date,
+				.field--name-field-display-in-neighborhood-ex,
+				.field--name-field-death-burial-date {
+					display: none;
+				}
+			}
+		}
+		
+		.field--name-field-death-certificate-image,
 		.paragraph--type--gallery {
-			.field--name-field-media {
+			> .media,
+			> .field--name-field-media {
+				display: block;
 				margin: 0 -30px;
 			}
 			.field--name-field-media-image-title {
@@ -83,7 +118,8 @@ main {
 			}
 			.field--name-field-media-image {
 				width: 100%;
-				height: 400px;
+				height: 460px;
+				padding: 0 30px;
 				margin-bottom: 30px;
 				display: flex;
 				align-items: center;

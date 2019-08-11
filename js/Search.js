@@ -96,7 +96,7 @@ Search = (function() {
 	    var lat = $(this).data('lat');
 	    var lon = $(this).data('lon');
 	    
-	    UI.moveMapToLatLon(lat, lon, 14);
+	    UI.moveMapToLatLon(lat, lon, 16, 0, 0);
     }
     
     var clearSearchResults = function() {

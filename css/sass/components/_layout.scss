@@ -124,4 +124,8 @@ main {
 		color: #A5AA3A;
 		margin: 0 10px;
 	}
+	
+	.kiosk & .footer {
+		display: none;
+	}
 }
