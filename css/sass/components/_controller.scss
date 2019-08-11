@@ -1,7 +1,7 @@
 #search-panel {
 	form {
 		width: 100%;
-		border-bottom: 1px solid gray;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 		padding: 16px 0;
 		height: 88px;
 		
@@ -9,7 +9,7 @@
 			fill: white;
 		    width: 24px;
 		    height: auto;
-		    margin: 0 10px 0 20px;
+		    margin: 0 20px 0 30px;
 		    vertical-align: middle;
 		}
 		.clear-search {
@@ -29,13 +29,13 @@
 		    border: none;
 		    font-size: 1.6rem;
 		    vertical-align: middle;
-		    width: 26vw;
+		    width: 31vw;
 		    color: white;
 		    outline: none;
 			box-shadow: none;
 		    
 		    &::placeholder {
-			    color: gray;
+			    color: rgba(255, 255, 255, 0.5);
 			    font-style: italic;
 		    }
 		    
@@ -51,11 +51,10 @@
 		padding: 0;
 		height: 550px;
 		overflow: auto;
-		border-top: 1px solid gray;
+		border-top: 1px solid rgba(255, 255, 255, 0.5);
 		
 		li {
-			border-bottom: 1px solid #666;
-			padding: 16px 20px 17px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 			color: white;
 			
 			&:last-of-type {
@@ -67,6 +66,7 @@
 			    height: 24px;
 			    margin-right: 10px;
 			    overflow: hidden;
+			    display: none;
 			}
 		}
 	}
@@ -97,6 +97,7 @@
 	}
 }
 
+#search-panel,
 #explore-panel,
 #list-panel {
 	ul {
@@ -107,13 +108,17 @@
 		li {
 			color: white;
 			font-size: 1.6rem;
-		    padding: 10px 40px 10px 20px;
-		    height: 60px;
+		    padding: 20px 40px 20px 30px;
+		    height: 80px;
 			display: block;
-		    border-bottom: 1px solid gray;
+		    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 		    overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+			
+			&:last-of-type {
+				border-bottom: none;
+			}
 		    
 		    img {
 			    width: 24px;

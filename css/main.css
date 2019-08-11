@@ -115,8 +115,8 @@ main {
     main aside.active {
       transform: translateX(0); }
     main aside h1 {
-      border-bottom: 1px solid gray;
-      padding: 24px 20px 25px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      padding: 24px 30px 25px;
       margin-bottom: 0;
       letter-spacing: 0; }
 
@@ -155,14 +155,14 @@ main {
 
 #search-panel form {
   width: 100%;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   padding: 16px 0;
   height: 88px; }
   #search-panel form .search-icon {
     fill: white;
     width: 24px;
     height: auto;
-    margin: 0 10px 0 20px;
+    margin: 0 20px 0 30px;
     vertical-align: middle; }
   #search-panel form .clear-search {
     background: transparent;
@@ -178,12 +178,12 @@ main {
     border: none;
     font-size: 1.6rem;
     vertical-align: middle;
-    width: 26vw;
+    width: 31vw;
     color: white;
     outline: none;
     box-shadow: none; }
     #search-panel form input::placeholder {
-      color: gray;
+      color: rgba(255, 255, 255, 0.5);
       font-style: italic; }
     #search-panel form input:focus, #search-panel form input:active {
       outline: none;
@@ -193,10 +193,9 @@ main {
   padding: 0;
   height: 550px;
   overflow: auto;
-  border-top: 1px solid gray; }
+  border-top: 1px solid rgba(255, 255, 255, 0.5); }
   #search-panel #search-panel-results li {
-    border-bottom: 1px solid #666;
-    padding: 16px 20px 17px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     color: white; }
     #search-panel #search-panel-results li:last-of-type {
       border-bottom: 0; }
@@ -204,7 +203,8 @@ main {
       width: 24px;
       height: 24px;
       margin-right: 10px;
-      overflow: hidden; }
+      overflow: hidden;
+      display: none; }
 #search-panel .ui-keyboard {
   top: auto;
   bottom: 0;
@@ -223,22 +223,29 @@ main {
       font-size: 1rem;
       vertical-align: bottom; }
 
+#search-panel ul,
 #explore-panel ul,
 #list-panel ul {
   margin: 0;
   padding: 0;
   list-style: none; }
+  #search-panel ul li,
   #explore-panel ul li,
   #list-panel ul li {
     color: white;
     font-size: 1.6rem;
-    padding: 10px 40px 10px 20px;
-    height: 60px;
+    padding: 20px 40px 20px 30px;
+    height: 80px;
     display: block;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
+    #search-panel ul li:last-of-type,
+    #explore-panel ul li:last-of-type,
+    #list-panel ul li:last-of-type {
+      border-bottom: none; }
+    #search-panel ul li img,
     #explore-panel ul li img,
     #list-panel ul li img {
       width: 24px;
@@ -255,53 +262,104 @@ main aside {
       display: block;
       font-size: 60%; }
   main aside .item-list {
-    padding: 0 20px 30px; }
+    padding: 30px; }
     main aside .item-list ol {
       margin: 0;
       padding: 0;
       list-style: none; }
       main aside .item-list ol li {
         color: white;
-        margin-bottom: 40px;
-        border-bottom: 1px solid #999;
-        padding-bottom: 20px; }
+        margin-bottom: 40px; }
         main aside .item-list ol li:last-of-type {
           border-bottom: 0;
           margin-bottom: 0; }
-    main aside .item-list .field__label,
-    main aside .item-list .field--name-created,
-    main aside .item-list .field--name-uid,
-    main aside .item-list .field--name-thumbnail {
-      display: none; }
-    main aside .item-list .paragraph--type--blockquote {
-      padding-left: 30px; }
-    main aside .item-list .field--name-field-blockquote-:before {
+  main aside .field__label,
+  main aside .field--name-created,
+  main aside .field--name-uid,
+  main aside .field--name-thumbnail {
+    display: none; }
+  main aside .paragraph--type--headline .field--name-field-title .field__item {
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase; }
+  main aside .paragraph--type--headline .field--name-field-subtitle .field__item {
+    font-family: 'PT Serif';
+    font-style: italic;
+    font-size: 1.2rem; }
+  main aside .paragraph--type--blockquote {
+    padding-left: 30px; }
+    main aside .paragraph--type--blockquote .field--name-field-blockquote-:before {
       content: "\2014"; }
-    main aside .item-list .field--name-field-media-image {
-      width: 100%;
-      height: 400px;
-      margin-bottom: 10px; }
-      main aside .item-list .field--name-field-media-image img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        max-height: 400px; }
-  main aside .slick-slider .field__item .media {
+  main aside .paragraph--type--gallery .field--name-field-media {
+    margin: 0 -30px; }
+  main aside .paragraph--type--gallery .field--name-field-media-image-title {
+    display: none; }
+  main aside .paragraph--type--gallery .field--name-field-media-image {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5); }
+    main aside .paragraph--type--gallery .field--name-field-media-image img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      max-width: 100%;
+      max-height: 400px; }
+  main aside .paragraph--type--gallery .field--name-field-media-image-caption {
+    margin-bottom: 10px;
+    padding: 0 30px; }
+  main aside .paragraph--type--gallery .field--name-field-media-image-credit {
+    padding: 0 30px;
+    font-size: 0.8rem;
+    font-style: italic; }
+  main aside .paragraph--type--gallery .slick-slider .field__item .media {
     display: block; }
-  main aside .slick-slider .slick-arrow {
+  main aside .paragraph--type--gallery .slick-slider .slick-arrow {
     position: absolute;
     z-index: 9;
-    top: 190px; }
-    main aside .slick-slider .slick-arrow.slick-next {
-      right: 0; }
-  main aside .slick-slider .slick-dots {
+    top: 190px;
+    width: 50px;
+    opacity: 0.5;
+    transition: 0.5s all;
+    cursor: pointer; }
+    main aside .paragraph--type--gallery .slick-slider .slick-arrow path {
+      fill: white; }
+    main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-prev {
+      left: 20px; }
+      main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-prev:hover {
+        left: 10px;
+        opacity: 1; }
+    main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-next {
+      right: 20px; }
+      main aside .paragraph--type--gallery .slick-slider .slick-arrow#slick-arrow-next:hover {
+        right: 10px;
+        opacity: 1; }
+  main aside .paragraph--type--gallery .slick-slider .slick-dots {
     margin: 0;
+    margin-top: 20px;
     padding: 0;
     text-align: center; }
-    main aside .slick-slider .slick-dots li {
+    main aside .paragraph--type--gallery .slick-slider .slick-dots li {
       margin: 0;
       padding: 0;
       border: 0;
       display: inline-block; }
+      main aside .paragraph--type--gallery .slick-slider .slick-dots li button {
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        text-indent: -9999px;
+        border-radius: 999px;
+        border: none;
+        margin: 0 5px;
+        background-color: rgba(255, 255, 255, 0.35);
+        cursor: pointer; }
+        main aside .paragraph--type--gallery .slick-slider .slick-dots li button[aria-label="1 of 1"] {
+          display: none; }
+      main aside .paragraph--type--gallery .slick-slider .slick-dots li.slick-active button {
+        background-color: white; }
 
 /*# sourceMappingURL=main.css.map */

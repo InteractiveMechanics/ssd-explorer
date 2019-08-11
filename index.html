@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./js/mottie/css/keyboard.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/bootstrap/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/slick/slick.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/lightGallery/lightgallery.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/mapbox/mapbox-gl.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/mapbox/mapbox-gl-geocoder.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.css" crossorigin="anonymous">
 
     <title>Explore the Epidemic - Spit Spreads Death</title>
@@ -175,34 +177,35 @@
 		
 		<aside id="search-panel" class="side-panel">
 			<form>
-				<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
-				<svg class="search-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="79px"
-					 height="79px" viewBox="0 0 79 79" style="enable-background:new 0 0 79 79;" xml:space="preserve">
-				<defs>
-				</defs>
+				<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					 viewBox="0 0 451 451" style="enable-background:new 0 0 451 451;" xml:space="preserve" class="search-icon">
 				<g>
-					<path d="M77.22,66.84L58.33,47.94c2.85-4.68,4.49-10.18,4.49-16.06C62.82,14.8,48.02,0,30.93,0C13.85,0,0,13.85,0,30.93
-						s14.8,31.88,31.88,31.88c5.68,0,11-1.54,15.57-4.21l19,19c1.86,1.86,4.87,1.86,6.73,0l4.71-4.71
-						C79.76,71.04,79.08,68.7,77.22,66.84z M9.52,30.93c0-11.83,9.59-21.42,21.41-21.42c11.83,0,22.37,10.54,22.37,22.37
-						c0,11.83-9.59,21.42-21.42,21.42C20.06,53.3,9.52,42.76,9.52,30.93z"/>
+					<path d="M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3
+						s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4
+						C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3
+						s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z"/>
 				</g>
 				</svg>
 				<input id="search-input" type="search" placeholder="Search by name, address, or location" />
 				
 				<button class="clear-search" type="button">
-					<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In  -->
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="84px"
-						 height="84px" viewBox="0 0 84 84" style="enable-background:new 0 0 84 84;" xml:space="preserve">
-					<defs>
-					</defs>
+					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						 viewBox="0 0 475.2 475.2" style="enable-background:new 0 0 475.2 475.2;" xml:space="preserve">
 					<g>
-						<path d="M42,0C18.8,0,0,18.81,0,42c0,23.2,18.8,42,42,42c23.19,0,42-18.8,42-42C84,18.81,65.19,0,42,0z M50.64,42l15.3,15.3
-							l-8.64,8.64L42,50.64l-15.3,15.3l-8.64-8.64L33.36,42l-15.3-15.3l8.64-8.65L42,33.36l15.3-15.3l8.64,8.64L50.64,42z"/>
+						<g>
+							<path d="M405.6,69.6C360.7,24.7,301.1,0,237.6,0s-123.1,24.7-168,69.6S0,174.1,0,237.6s24.7,123.1,69.6,168s104.5,69.6,168,69.6
+								s123.1-24.7,168-69.6s69.6-104.5,69.6-168S450.5,114.5,405.6,69.6z M386.5,386.5c-39.8,39.8-92.7,61.7-148.9,61.7
+								s-109.1-21.9-148.9-61.7c-82.1-82.1-82.1-215.7,0-297.8C128.5,48.9,181.4,27,237.6,27s109.1,21.9,148.9,61.7
+								C468.6,170.8,468.6,304.4,386.5,386.5z"/>
+							<path d="M342.3,132.9c-5.3-5.3-13.8-5.3-19.1,0l-85.6,85.6L152,132.9c-5.3-5.3-13.8-5.3-19.1,0c-5.3,5.3-5.3,13.8,0,19.1
+								l85.6,85.6l-85.6,85.6c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4l85.6-85.6l85.6,85.6c2.6,2.6,6.1,4,9.5,4
+								c3.5,0,6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1l-85.4-85.6l85.6-85.6C347.6,146.7,347.6,138.2,342.3,132.9z"/>
+						</g>
 					</g>
 					</svg>
 				</button>
 			</form>
-			<ul id="search-panel-results"></ul>				
+			<ul id="search-panel-results"></ul>		
 		</aside>
 		
 		<aside id="explore-panel" class="side-panel">
@@ -220,14 +223,14 @@
 	
 	
 	<script id="single-search-tmpl" type="text/x-handlebars-template">
-		{{#each venues}}
-			<li data-lat="{{ location.lat }}" data-lon="{{ location.lng }}"><img src="" alt="icon" />{{ name }}</li>
+		{{#each features}}
+			<li data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}"><img src="" alt="icon" />{{ place_name }}</li>
 		{{/each}}
 	</script>
 	
 	<script id="list-location-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
-			<li data-lat="{{ lat }}" data-lon="{{ lon }}">
+			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}" data-address="{{ address }}">
 			{{#if_eq type 'Landmark'}} <img src="./assets/icon-circle-landmark.svg" />{{ title }}</li> {{/if_eq}}
 			{{#if_eq type 'Community Story'}} <img src="./assets/icon-circle-story.svg" />{{ title }}</li> {{/if_eq}}
 			{{#if_eq type 'Hospital'}} <img src="./assets/icon-circle-hospital.svg" />{{ title }}</li> {{/if_eq}}
@@ -237,7 +240,7 @@
 	
 	<script id="list-neighborhood-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
-			<li data-lat="{{ lat }}" data-lon="{{ lon }}">{{ title }}</li>
+			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}">{{ title }}</li>
 		{{/each}}
 	</script>
 	
@@ -261,8 +264,10 @@
     <script src="./js/jquery/popper.min.js" crossorigin="anonymous"></script>
     <script src="./js/defiant/defiant.min.js" crossorigin="anonymous"></script>
     <script src="./js/mapbox/mapbox-gl.js" crossorigin="anonymous"></script>
+    <script src="./js/mapbox/mapbox-gl-geocoder.min.js" crossorigin="anonymous"></script>
     <script src="./js/handlebars/handlebars-v4.0.12.js" crossorigin="anonymous"></script>
     <script src="./js/bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="./js/lightGallery/lightgallery-all.min.js" crossorigin="anonymous"></script>
     <script src="./js/chartjs/Chart.bundle.min.js" crossorigin="anonymous"></script>
     <script src="./js/mottie/js/jquery.keyboard.min.js" crossorigin="anonymous"></script>
     <script src="./js/slick/slick.min.js" crossorigin="anonymous"></script>

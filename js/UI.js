@@ -3,6 +3,7 @@ UI = (function() {
 	// STORE RENDERING FOR MAP
 	var map;
 	var ctx;
+	var geocoder;
 	
 	var source_list_neighborhood   = document.getElementById("list-neighborhood-tmpl").innerHTML;
 	var template_list_neighborhood = Handlebars.compile(source_list_neighborhood);
@@ -126,6 +127,7 @@ UI = (function() {
 	    $(document).on('click tap drag', '#intro-explore', openPanel);
 	    
 	    $(document).on('click tap drag', '#explore-panel-neighborhoods li', clickNeighborResult);
+	    $(document).on('click tap drag', '#list-panel-locations li', clickPointResult)
     }
     
     var closePanels = function() {
@@ -133,6 +135,7 @@ UI = (function() {
 	    $('nav').removeClass('active');
 	    $('nav button').removeClass('active');
 	    $(this).addClass('active');
+	    
     }
     
     var openPanel = function() {
@@ -181,7 +184,9 @@ UI = (function() {
 			gallery.find('.field__items').slick({
 				dots: true,
 				infinite: true,
-				fade: true
+				fade: true,
+				prevArrow: '<svg version="1.1" id="slick-arrow-prev" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31.494 31.494" style="enable-background:new 0 0 31.494 31.494;" xml:space="preserve"><path d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554 c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587 c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"/></svg>',
+				nextArrow: '<svg version="1.1" id="slick-arrow-next" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 31.49 31.49" style="enable-background:new 0 0 31.49 31.49;" xml:space="preserve"><path d="M21.205,5.007c-0.429-0.444-1.143-0.444-1.587,0c-0.429,0.429-0.429,1.143,0,1.571l8.047,8.047H1.111 C0.492,14.626,0,15.118,0,15.737c0,0.619,0.492,1.127,1.111,1.127h26.554l-8.047,8.032c-0.429,0.444-0.429,1.159,0,1.587 c0.444,0.444,1.159,0.444,1.587,0l9.952-9.952c0.444-0.429,0.444-1.143,0-1.571L21.205,5.007z"/></svg>'
 			});
 		}
 		
@@ -201,15 +206,25 @@ UI = (function() {
     var clickNeighborResult = function() {
 	    var lat = $(this).data('lat');
 	    var lon = $(this).data('lon');
+	    var content = $(this).data('content');
+		var title = $(this).data('title');
+		var address = '';
+		var type = '';
 	    
-	    UI.moveMapToLatLon(lat, lon, 14);
+	    UI.moveMapToLatLon(lat, lon, 13);
+		openDetailPanel(title, type, address, content, lon, lat);
+    }
+    
+    var clickPointResult = function() {
+	    var lat = $(this).data('lat');
+	    var lon = $(this).data('lon');
+	    var content = $(this).data('content');
+		var title = $(this).data('title');
+		var address = $(this).data('address');
+		var type = $(this).data('type');
 	    
-	    closePanels();
-	    scrollToTopOfPanel();
-	    $('nav').addClass('active');
-	    
-	    var html = template_single_neighborhood();
-		$('#detail-panel').html(html).addClass('active');
+	    UI.moveMapToLatLon(lat, lon, 16);
+		openDetailPanel(title, type, address, content, lon, lat);
     }
     
     var scrollToTopOfPanel = function() {
@@ -217,18 +232,19 @@ UI = (function() {
     }
     
     var moveMapToLatLon = function(lat, lon, zoom) {
-	    map.flyTo({
+	    map.easeTo({
 		    // These options control the ending camera position: centered at
 			// the target, at zoom level 9, and north up.
 			center: [lon, lat],
+			offset: [300, 0],
 			zoom: zoom,
 			bearing: 0,
 			 
 			// These options control the flight curve, making it move
 			// slowly and zoom out almost completely before starting
 			// to pan.
-			speed: 2,
-			curve: 1,
+			speed: 3,
+			curve: 2,
 			 
 			// This can be any easing function: it takes a number between
 			// 0 and 1 and returns another number between 0 and 1.
