@@ -460,41 +460,54 @@ main aside {
         background-color: white; }
 
 .audio-player {
-  border: 1px solid #dfdfdf;
+  background: #FFF;
   text-align: center;
   display: flex;
   flex-flow: row;
-  margin: 4rem 0 4rem 0;
-  width: 600px; }
+  margin: 0;
+  width: 100%; }
   .audio-player .player-controls {
     align-items: center;
     justify-content: center;
-    margin-top: 2.5rem;
-    flex: 3; }
+    flex: 3;
+    padding: 15px 30px; }
     .audio-player .player-controls progress {
-      width: 90%; }
+      width: 100%; }
     .audio-player .player-controls progress[value] {
       -webkit-appearance: none;
       appearance: none;
       background-color: white;
-      color: blue;
-      height: 5px; }
+      color: #4a3323;
+      height: 10px; }
     .audio-player .player-controls progress[value]::-webkit-progress-bar {
       background-color: white;
-      border-radius: 2px;
+      border-radius: 6px;
       border: 1px solid #dfdfdf;
-      color: blue; }
+      color: #4a3323; }
     .audio-player .player-controls progress::-webkit-progress-value {
-      background-color: blue; }
+      background-color: #17485d; }
     .audio-player .player-controls p {
-      font-size: 1.6rem; }
+      font-size: 1.6rem;
+      color: black;
+      text-align: left;
+      line-height: 1.4;
+      font-family: 'Fjalla One', sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      color: #17485d; }
+      .audio-player .player-controls p small {
+        display: block;
+        font-size: 60%;
+        text-transform: none; }
+  .audio-player small {
+    color: gray; }
   .audio-player #play-btn {
-    background-image: url("http://imgur.com/JzQP8td.png");
+    background-image: url("../assets/icon-play.svg");
     background-size: cover;
     width: 75px;
     height: 75px;
     margin: 2rem 0 2rem 2rem; }
     .audio-player #play-btn.pause {
-      background-image: url("http://imgur.com/MbJn41l.png"); }
+      background-image: url("../assets/icon-pause.svg"); }
 
 /*# sourceMappingURL=main.css.map */

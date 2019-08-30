@@ -1,58 +1,71 @@
 .audio-player {
-  	border: 1px solid lighten(#acacac, 20%);
+  	background: #FFF;
   	text-align: center;
   	display: flex;
   	flex-flow: row;
-  	margin: 4rem 0 4rem 0;
-  	width: 600px;
+  	margin: 0;
+  	width: 100%;
   
   	.player-controls {
     	align-items: center;
 		justify-content: center;
-		margin-top: 2.5rem;
 		flex: 3;
+		padding: 15px 30px;
     
 		progress {
-			width: 90%;
+			width: 100%;
     	}
     
 		progress[value] {
 			-webkit-appearance: none;
 			appearance: none;
 			background-color: white;
-			color: blue;
-			height: 5px;
+			color: rgba(74, 51, 35, 1);
+			height: 10px;
     	}
     
 		progress[value]::-webkit-progress-bar {
 			background-color: white;
-			border-radius: 2px;
+			border-radius: 6px;
 			border: 1px solid lighten(#acacac, 20%);
-			color: blue;
+			color: rgba(74, 51, 35, 1);
     	}
     
 		progress::-webkit-progress-value {
-			background-color: blue;
+			background-color: rgba(#17485D, 1);
     	}
     
 		p {
 			font-size: 1.6rem;
+			color: black;
+			text-align: left;
+			line-height: 1.4;
+			font-family: 'Fjalla One', sans-serif;
+			text-transform: uppercase;
+			margin-bottom: 5px;
+			color: rgba(#17485D, 1);
 			
 			small {
-				
+				display: block;
+				font-size: 60%;
+				text-transform: none;
 			}
     	}
 	}
+	
+	small {
+		color: gray;
+	}
   
 	#play-btn {
-    	background-image: url('http://imgur.com/JzQP8td.png');
+    	background-image: url('../assets/icon-play.svg');
 		background-size: cover;
 		width: 75px;
 		height: 75px;
 		margin: 2rem 0 2rem 2rem;
 		
 		&.pause {
-			background-image: url('http://imgur.com/MbJn41l.png');
+			background-image: url('../assets/icon-pause.svg');
     	}
   	}
 }

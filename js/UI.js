@@ -301,8 +301,8 @@ UI = (function() {
 				html += '		<span id="seek-obj-container">';
 				html += '			<progress id="seek-obj" value="0" max="1"></progress>';
 				html += '		</span>';
-				html += '		<small style="float: left; position: relative; left: 15px;" id="start-time"></small>';
-				html += '		<small style="float: right; position: relative; right: 20px;" id="end-time"></small>';
+				html += '		<small style="float: left; position: relative; left: 0;" id="start-time">00:00</small>';
+				html += '		<small style="float: right; position: relative; right: 0;" id="end-time">00:00</small>';
 				html += '	</div>';
 				html += '</div>';
 				
