@@ -283,6 +283,33 @@ UI = (function() {
 			});
 		});
 		
+		var audio = $('#detail-panel').find('.paragraph--type--audio-file');
+		audio.each( function( index ) {
+			var source = $(this).find('source').attr('src');
+			var title = $(this).find('.field--name-field-media-audio-title .field__label').text();
+			var desc = $(this).find('.field--name-field-media-audio-title .field__item').text();
+			
+			var html  = '<div class="audio-player">';
+				html += '	<div id="play-btn"></div>';
+				html += '	<div class="audio-wrapper" id="player-container" href="javascript:;">';
+				html += '		<audio id="player" ontimeupdate="UI.initProgressBar()">';
+				html += '			<source src="' + source + '" type="audio/mp3">';
+				html += '		</audio>';
+				html += '	</div>'
+				html += '	<div class="player-controls scrubber">';
+				html += '		<p>' + title + ' <small>' + desc + '</small></p>';
+				html += '		<span id="seek-obj-container">';
+				html += '			<progress id="seek-obj" value="0" max="1"></progress>';
+				html += '		</span>';
+				html += '		<small style="float: left; position: relative; left: 15px;" id="start-time"></small>';
+				html += '		<small style="float: right; position: relative; right: 20px;" id="end-time"></small>';
+				html += '	</div>';
+				html += '</div>';
+				
+			$(this).find('.field--name-field-media-audio-file').html(html);
+			initPlayers();
+		});
+		
 		
 		if (address) {
 			UI.moveMapToLatLon(lat, lon, 16, 0, 45);
@@ -290,6 +317,79 @@ UI = (function() {
 			UI.moveMapToLatLon(lat, lon, 14, 0, 0);
 		}
     }
+    
+    var initProgressBar = function() {
+		var player = document.getElementById('player');
+		var length = player.duration
+		var current_time = player.currentTime;
+
+		// calculate total length of value
+		var totalLength = calculateTotalValue(length)
+		document.getElementById("end-time").innerHTML = totalLength;
+
+		// calculate current value time
+		var currentTime = calculateCurrentValue(current_time);
+		document.getElementById("start-time").innerHTML = currentTime;
+
+		var progressbar = document.getElementById('seek-obj');
+		progressbar.value = (player.currentTime / player.duration);
+		progressbar.addEventListener("click", seek);
+
+		if (player.currentTime == player.duration) {
+			document.getElementById('play-btn').className = "";
+  		}
+
+  		function seek(event) {
+  			var percent = event.offsetX / this.offsetWidth;
+  			player.currentTime = percent * player.duration;
+  			progressbar.value = percent / 100;
+  		}
+	}
+
+	var initPlayers = function() {
+		var playerContainer = document.getElementById('player-container'),
+		    player = document.getElementById('player'),
+		    isPlaying = false,
+		    playBtn = document.getElementById('play-btn');
+		
+	    if (playBtn != null) {
+	    	playBtn.addEventListener('click', function() {
+	          	togglePlay()
+	    	});
+	    }
+	
+		function togglePlay() {
+			if (player.paused === false) {
+			    player.pause();
+			    isPlaying = false;
+			    document.getElementById('play-btn').className = "";
+			} else {
+			    player.play();
+			    document.getElementById('play-btn').className = "pause";
+			    isPlaying = true;
+			}
+		}
+	}
+
+	var calculateTotalValue = function(length) {
+		var minutes = Math.floor(length / 60),
+			seconds_int = length - minutes * 60,
+			seconds_str = seconds_int.toString(),
+			seconds = seconds_str.substr(0, 2),
+			time = minutes + ':' + seconds
+
+		return time;
+	}
+
+	var calculateCurrentValue = function(currentTime) {
+		var current_hour = parseInt(currentTime / 3600) % 24,
+			current_minute = parseInt(currentTime / 60) % 60,
+			current_seconds_long = currentTime % 60,
+			current_seconds = current_seconds_long.toFixed(),
+			current_time = (current_minute < 10 ? "0" + current_minute : current_minute) + ":" + (current_seconds < 10 ? "0" + current_seconds : current_seconds);
+
+		return current_time;
+	}
     
     var destroyGallery = function() {
 	    if (gallery){	    
@@ -360,7 +460,8 @@ UI = (function() {
         closePanels: closePanels,
         closeAttract: closeAttract,
         moveMapToLatLon: moveMapToLatLon,
-        destroyGallery: destroyGallery
+        destroyGallery: destroyGallery,
+        initProgressBar: initProgressBar
     }
 
 })(mapboxgl);
