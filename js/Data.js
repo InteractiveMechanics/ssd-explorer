@@ -39,11 +39,38 @@ Data = (function() {
 		    var newData = {
 			    "type": "Feature",
 			    "properties": {
-				    "date": date,
+				    "coordinates": [lon, lat],
+				    "address": value.address,
 				    "age": age,
+				    
+				    "first_name": value.first_name,
+				    "last_name": value.last_name,
+				    "middle_name": value.middle_name,
+				    "prefix_name": value.prefix_name,
+				    "suffix_name": value.suffix_name,
+				    
+				    "birth_place": value.birth_place,
+				    "birth_date": value.birth_date,
+				    "father_birthplace": value.father_birthplace,
+				    "mother_birthplace": value.mother_birthplace,
+				    "generation": value.generation,
+				    
+				    "death_date": date,
+				    "death_address": value.death_address,
+				    
+				    "doctor_address": value.doctor_address,
+				    "doctor_first": value.doctor_first,
+				    "doctor_last": value.doctor_last,
+				    "hospital_name": value.hospital_name,
+				    
+				    "burial_date": value.burial_date,
+				    "burial_place": value.burial_place,
+				    
 				    "race": value.rabe,
 				    "sex": value.sex,
-				    "status": value.status
+				    "status": value.status,
+				    "employer": value.employer,
+				    "occupation": value.occupation
 			    },
 			    "geometry": {
 				    "type": "Point",

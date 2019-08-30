@@ -32,6 +32,11 @@
 		</div>
 	</div>
 	
+	<div id="outro" class="fade">
+		<h1>Need more time?</h1>
+		<h2>Still there? Tap anywhere to continue exploring.</h2>
+	</div>
+	
 	<main>
 		<div id="map"></div>
 		<nav>
@@ -186,7 +191,7 @@
 						s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z"/>
 				</g>
 				</svg>
-				<input id="search-input" type="search" placeholder="Search by name, address, or location" />
+				<input id="search-input" type="search" placeholder="Search by last name, address, or location" />
 				
 				<button class="clear-search" type="button">
 					<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -224,7 +229,38 @@
 	
 	<script id="single-search-tmpl" type="text/x-handlebars-template">
 		{{#each features}}
-			<li data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}"><img src="" alt="icon" />{{ place_name }}</li>
+			<li class="search-result-api" data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}">
+				<img src="./assets/icon-circle-poi.svg" alt="icon" />{{ place_name }}
+			</li>
+		{{/each}}
+	</script>
+	
+	<script id="single-name-search-tmpl" type="text/x-handlebars-template">
+		{{#each .}}
+			<li class="search-result-name" 
+				data-lat="{{ coordinates.[1] }}" data-lon="{{ coordinates.[0] }}"
+				data-name="{{ prefix_name }} {{ first_name }} {{ middle_name }} {{ last_name }} {{ suffix_name }}"
+				data-address="{{ address }}"
+				data-age="{{ age }}"
+				data-birth-place="{{ birth_place }}"
+				data-birth-date="{{ birth_date }}"
+				data-father-birthplace="{{ father_birthplace }}"
+				data-mother-birthplace="{{ mother_birthplace }}"
+				data-generation="{{ generation }}"
+				data-death-date="{{ death_date }}"
+				data-death-address="{{ death_address }}"
+				data-doctor-address="{{ doctor_address }}"
+				data-doctor-name="{{ doctor_first }} {{ doctor_last }}"
+				data-hospital-name="{{ hospital_name }}"
+				data-burial-place="{{ burial_place }}"
+				data-burial-date="{{ burial_date }}"
+				data-race="{{ race }}"
+				data-sex="{{ sex }}"
+				data-status="{{ status }}"
+				data-occupation="{{ occupation }}"
+				data-employer="{{ employer }}">
+				<img src="./assets/icon-circle-person.svg" alt="icon" />{{ prefix_name }} {{ first_name }} {{ middle_name }} {{ last_name }} {{ suffix_name }}
+			</li>
 		{{/each}}
 	</script>
 	
@@ -248,6 +284,37 @@
 		<h1>{{ title }}</h1>
 		
 		{{{ content }}}
+	</script>
+	
+	<script id="single-death-record-tmpl" type="text/x-handlebars-template">
+		<h1>
+			{{ name }}
+			<small>{{ address }}</small>
+		</h1>
+		
+		<div class="item-list death-record-list">
+			{{#if age}}<div class="row"><div class="col">Age</div><div class="col">{{ age }}</div></div>{{/if}}
+			{{#if race}}<div class="row"><div class="col">Race</div><div class="col">{{ race }}</div></div>{{/if}}
+			{{#if sex}}<div class="row"><div class="col">Sex</div><div class="col">{{ sex }}</div></div>{{/if}}
+			{{#if status}}<div class="row"><div class="col">Marital Status</div><div class="col">{{ status }}</div></div>{{/if}}
+			
+			{{#if occupation}}<div class="row"><div class="col">Occupation</div><div class="col">{{ occupation }}</div></div>{{/if}}
+			{{#if employer}}<div class="row"><div class="col">Employer</div><div class="col">{{ employer }}</div></div>{{/if}}
+			
+			{{#if birth_date}}<div class="row"><div class="col">Birth Date</div><div class="col">{{ birth_date }}</div></div>{{/if}}
+			{{#if birth_place}}<div class="row"><div class="col">Birth Place</div><div class="col">{{ birth_place }}</div></div>{{/if}}
+			{{#if father_birthplace}}<div class="row"><div class="col">Father's Birth Place</div><div class="col">{{ father_birthplace }}</div></div>{{/if}}
+			{{#if mother_birthplace}}<div class="row"><div class="col">Mother's Birth Place</div><div class="col">{{ mother_birthplace }}</div></div>{{/if}}
+			
+			{{#if death_date}}<div class="row"><div class="col">Date of Death</div><div class="col">{{ death_date }}</div></div>{{/if}}
+			{{#if death_address}}<div class="row"><div class="col">Address of Death</div><div class="col">{{ death_address }}</div></div>{{/if}}
+			{{#if doctor_name}}<div class="row"><div class="col">Doctor's Name</div><div class="col">{{ doctor_name }}</div></div>{{/if}}
+			{{#if doctor_address}}<div class="row"><div class="col">Doctor's Address</div><div class="col">{{ doctor_address }}</div></div>{{/if}}
+			{{#if hospital_name}}<div class="row"><div class="col">Hospital Name</div><div class="col">{{ hospital_name }}</div></div>{{/if}}
+			
+			{{#if burial_place}}<div class="row"><div class="col">Burial Place</div><div class="col">{{ burial_place }}</div></div>{{/if}}
+			{{#if burial_date}}<div class="row"><div class="col">Burial Date</div><div class="col">{{ burial_date }}</div></div>{{/if}}
+		</div>
 	</script>
 	
 	<script id="single-poi-tmpl" type="text/x-handlebars-template">

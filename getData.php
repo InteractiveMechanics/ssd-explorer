@@ -66,11 +66,32 @@
 		}
 	}
 	
+	function loopThroughAndGetAudioFiles() {
+		
+		global $result, $urlbase;
+		
+		foreach($result as $key => $value) {
+			
+			$doc = new DOMDocument();
+			@$doc->loadHTML($value->content);
+			$xml = simplexml_import_dom($doc);
+			$files = $xml->xpath('//source[not(contains(@src, "?itok"))]');
+			
+			foreach ($files as $file) {			    
+			    $basename = basename((string) $file['src']);
+			    
+				copy($urlbase . (string) $file['src'], './cache/files/' . $basename);
+				print_r("Downloaded file: " . $basename . "<br/>");
+			}
+		}
+	}
+	
 	getJsonData($url_poi, "./cache/data_poi.json", "Point of Interest data cached. <br/>");
 	getJsonData($url_nabe, "./cache/data_neighborhoods.json", "Neighborhood data cached. <br/><br/>");
 	
 	deleteExistingImages();
 	loopThroughAndGetImages();
+	loopThroughAndGetAudioFiles();
 
 	print_r("<br/> Data caching complete!");
 	

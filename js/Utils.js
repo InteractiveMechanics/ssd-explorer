@@ -25,12 +25,18 @@ Utilities = (function() {
     }
     
     var showMoreTimeModal = function() {
-	    console.log("SHOW MORE TIME MODAL");
+		
+    }
+    
+    var hideMoreTimeModal = function() {
+	    
     }
 
     var resetInteractive = function() {
+	    Search.clearSearchResults();
 	    UI.openAttract();
 		UI.closePanels();
+		UI.destroyGallery();
 		UI.moveMapToLatLon(39.9502404, -75.1592545, 11.2, 0, 0, 0);
     }
 

@@ -21,7 +21,7 @@ $(function(){
 		$.getJSON(uri, function(response, status, jqXHR) {
 			data_neighborhoods = response;
 			
-			var uri = '../animation/cache/data.json';
+			var uri = './cache/data.json';
 			
 			$.getJSON(uri, function(response, status, jqXHR) {
 				data_records = response;

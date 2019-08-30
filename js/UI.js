@@ -4,6 +4,7 @@ UI = (function() {
 	var map;
 	var ctx;
 	var geocoder;
+	var gallery;
 	
 	var source_list_neighborhood   = document.getElementById("list-neighborhood-tmpl").innerHTML;
 	var template_list_neighborhood = Handlebars.compile(source_list_neighborhood);
@@ -127,7 +128,7 @@ UI = (function() {
 	    $(document).on('click tap drag', '#intro-explore', openPanel);
 	    
 	    $(document).on('click tap drag', '#explore-panel-neighborhoods li', clickNeighborResult);
-	    $(document).on('click tap drag', '#list-panel-locations li', clickPointResult)
+	    $(document).on('click tap drag', '#list-panel-locations li', clickPointResult);
     }
     
     var closePanels = function() {
@@ -179,7 +180,7 @@ UI = (function() {
 	    var html = template_single_poi({ "title": title, "type": type, "address": address, "content": content });
 		$('#detail-panel').html(html).addClass('active');
 		
-		var gallery = $('#detail-panel').find('.paragraph--type--gallery');
+		gallery = $('#detail-panel').find('.paragraph--type--gallery');
 		if (gallery) {
 			gallery.find('.field__items').slick({
 				dots: true,
@@ -191,11 +192,11 @@ UI = (function() {
 			
 			gallery.find('.slick-slide .field--name-field-media-image img').each( function( index ) {
 				var src = $(this).attr('src');
-				$(this).attr('data-src', src);
+				$(this).parent().parent().attr('data-src', src);
 			});
 			
 			gallery.lightGallery({
-				selector: '.slick-slide .field--name-field-media-image img',
+				selector: '.slick-slide .field--name-field-media-image',
 				thumbnail: false,
 				autoplay: false,
 				autoplayControls: false,
@@ -214,8 +215,7 @@ UI = (function() {
 		
 		var certificate = $('#detail-panel').find('.paragraph--type--death-certificate');
 		if (certificate) {
-			var record = certificate.find('.field--name-field-death-certificate-record');
-			certificate.append(record);
+			var record = certificate.find('.field--name-field-death-certificate-record').remove();
 			
 			certificate.find('.media--type-image .field--name-field-media-image img').each( function( index ) {
 				var src = $(this).attr('src');
@@ -275,17 +275,24 @@ UI = (function() {
 				    legend: {
 				    	position: 'right',
 				    	labels: {
+					    	boxWidth: 14,
 					    	fontColor: '#FFF'
 				    	}
 				    }
 			    }
 			});
 		});
+		
+		
 		if (address) {
 			UI.moveMapToLatLon(lat, lon, 16, 0, 45);
 		} else {
 			UI.moveMapToLatLon(lat, lon, 14, 0, 0);
 		}
+    }
+    
+    var destroyGallery = function() {
+	    gallery.data('lightGallery').destroy();
     }
     
     var loadNeighborhoods = function() {
@@ -350,7 +357,8 @@ UI = (function() {
         openAttract: openAttract,
         closePanels: closePanels,
         closeAttract: closeAttract,
-        moveMapToLatLon: moveMapToLatLon
+        moveMapToLatLon: moveMapToLatLon,
+        destroyGallery: destroyGallery
     }
 
 })(mapboxgl);

@@ -15,6 +15,10 @@ main {
 		.item-list {
 			padding: 0 30px 30px;
 			
+			&.death-record-list {
+				padding-top: 30px;
+			}
+			
 			ol {
 				margin: 0;
 				padding: 0;
@@ -30,6 +34,9 @@ main {
 					}
 				}
 			}
+			div.col {
+				color: white;
+			}
 		}
 			
 		
@@ -41,7 +48,6 @@ main {
 		}
 		
 		
-		
 		.paragraph--type--headline {
 			&:first-of-type {
 				margin-top: 30px;
@@ -50,7 +56,7 @@ main {
 			.field--name-field-title {
 				.field__item {
 					font-family: 'Fjalla One', sans-serif;
-					font-size: 1.8rem;
+					font-size: 3rem;
 					text-transform: uppercase;
 				}
 			}
@@ -63,6 +69,43 @@ main {
 			}
 		}
 		
+		.field--name-field-text-block-title {
+			.field__item {
+				font-family: 'Fjalla One', sans-serif;
+				font-size: 1.8rem;
+				text-transform: uppercase;
+			}
+		}
+		.field--name-field-text-body-copy {
+			ul,
+			ol {
+				margin-bottom: 20px;
+				
+				li {
+					margin-bottom: 10px;
+				}
+			}
+		}
+		
+		.paragraph--type--audio-file {
+			.media {
+				display: block;
+			}
+			.field--name-field-media-audio-file {
+				margin-top: 30px;
+				margin-bottom: 30px;
+			}
+			.field--name-field-media-audio-title {
+				.field__item {
+					font-family: 'Fjalla One', sans-serif;
+					font-size: 1.8rem;
+					text-transform: uppercase;
+				}
+			}
+			.field--name-field-media-audio-transcript {
+				
+			}	
+		}		
 		
 		.paragraph--type--blockquote {
 			padding-left: 30px;
@@ -75,6 +118,13 @@ main {
 		}
 		
 		.paragraph--type--pie-chart {
+			.field--name-field-title {
+				.field__item {
+					font-family: 'Fjalla One', sans-serif;
+					font-size: 1.8rem;
+					text-transform: uppercase;
+				}
+			}
 			.field--name-field-chart-rows {
 				display: none;
 			}
@@ -125,6 +175,7 @@ main {
 				align-items: center;
 				justify-content: center;
 				background: rgba(0,0,0,0.5);
+				position: relative;
 				
 				img {
 					display: block;
@@ -132,6 +183,16 @@ main {
 				    width: auto;
 				    max-width: 100%;
 				    max-height: 400px;
+				}
+				
+				&:after {
+					content: '';
+					background: url('../assets/icon-zoom.svg');
+					width: 34px;
+					height: 34px;
+					position: absolute;
+    				bottom: 20px;
+					right: 20px;
 				}
 			}
 			.field--name-field-media-image-caption {
