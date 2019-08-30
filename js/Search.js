@@ -29,7 +29,9 @@ Search = (function() {
 	    $(document).on('click tap drag', '#search-panel-results li.search-result-name', clickSearchNameResult);
     }
     
-    var searchFourquareVenues = function(e) {	
+    var searchFourquareVenues = function(e) {
+	    Utilities.resetTimeout();
+	    
 	    if (e.type == "change" || (e.type == "keypress" && e.which == 13)){
 		    if ( $('#search-input').val() != '' ) {
 	            $('.clear-search').addClass('active');
@@ -228,6 +230,8 @@ Search = (function() {
     var clearSearchResults = function() {
 	    $('#search-input').val('');
 	    $('#search-panel-results').html('');
+	    
+	    UI.moveMapToLatLon(39.9502404, -75.1592545, 11.2, 0, 0, 300);
     }
     
     return {

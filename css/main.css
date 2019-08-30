@@ -220,8 +220,7 @@ main {
       width: 24px;
       height: 24px;
       margin-right: 10px;
-      overflow: hidden;
-      display: none; }
+      overflow: hidden; }
 #search-panel .ui-keyboard {
   top: auto;
   bottom: 0;

@@ -292,7 +292,9 @@ UI = (function() {
     }
     
     var destroyGallery = function() {
-	    gallery.data('lightGallery').destroy();
+	    if (gallery){	    
+		    gallery.data('lightGallery').destroy();
+		}
     }
     
     var loadNeighborhoods = function() {

@@ -1,7 +1,7 @@
 Utilities = (function() {
 	var timeout = [];
 	var duration = 150000; // 2.5 minutes
-    var longDuration = 160000; // 2.5 minutes + 10 seconds
+    var longDuration = 165000; // 2.5 minutes + 15 seconds
 	
 	var init = function() {
         bindEvents();
@@ -12,27 +12,35 @@ Utilities = (function() {
     }
     
     var resetTimeout = function() {
-	    console.log("RESET");
-	    
 	    if (timeout) {
             $.each(timeout, function(index, value){
                 clearTimeout(value);
                 timeout.splice(index, 1);
             });
         }
+        
+        hideMoreTimeModal();
         timeout.push(setTimeout(showMoreTimeModal, duration));
         timeout.push(setTimeout(resetInteractive, longDuration));
     }
     
     var showMoreTimeModal = function() {
-		
+		$('#outro').removeClass('d-none');
+	    setTimeout(function() {
+		    $('#outro').addClass('show');
+	    }, 100);
     }
     
     var hideMoreTimeModal = function() {
-	    
+	    $('#outro').removeClass('show');
+	    setTimeout(function() {
+		    $('#outro').addClass('d-none');
+	    }, 500);
     }
 
     var resetInteractive = function() {
+	    hideMoreTimeModal();
+	    
 	    Search.clearSearchResults();
 	    UI.openAttract();
 		UI.closePanels();
