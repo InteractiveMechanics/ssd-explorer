@@ -31,6 +31,7 @@ $(function(){
 				$.getJSON(uri, function(response, status, jqXHR) {
 					data_boundaries = response;
 					
+					Analytics.init();
 					Utilities.init();
 					Data.init();
 					UI.init();

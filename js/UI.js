@@ -136,7 +136,6 @@ UI = (function() {
 	    $('nav').removeClass('active');
 	    $('nav button').removeClass('active');
 	    $(this).addClass('active');
-	    
     }
     
     var openPanel = function() {
@@ -156,6 +155,9 @@ UI = (function() {
 		    $('nav').removeClass('active');
 		    $('button[data-id="' + id + '"').removeClass('active');
 	    }
+	    
+	    Analytics.sendAnalyticsScreen('Screen: "' + id + '" Panel');
+	    Analytics.sendAnalyticsEvent('Panel', id, 'Open');
     }
     
     var openAttract = function() {
@@ -316,6 +318,15 @@ UI = (function() {
 		} else {
 			UI.moveMapToLatLon(lat, lon, 14, 0, 0);
 		}
+		
+		Analytics.sendAnalyticsScreen('Screen: "Detail" Panel');
+		Analytics.sendAnalyticsEvent('Panel', title, 'Open');
+		
+		if (type) {
+			Analytics.sendAnalyticsEvent('Content', type);
+		} else {
+			Analytics.sendAnalyticsEvent('Content', 'neighborhood');
+		}
     }
     
     var initProgressBar = function() {
@@ -363,10 +374,14 @@ UI = (function() {
 			    player.pause();
 			    isPlaying = false;
 			    document.getElementById('play-btn').className = "";
+			    
+			    Analytics.sendAnalyticsEvent('Audio', 'Stop');
 			} else {
 			    player.play();
 			    document.getElementById('play-btn').className = "pause";
 			    isPlaying = true;
+			    
+			    Analytics.sendAnalyticsEvent('Audio', 'Start');
 			}
 		}
 	}

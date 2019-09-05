@@ -29,6 +29,8 @@ Utilities = (function() {
 	    setTimeout(function() {
 		    $('#outro').addClass('show');
 	    }, 100);
+	    
+	    Analytics.sendAnalyticsScreen('Screen: Need More Time Modal');
     }
     
     var hideMoreTimeModal = function() {
@@ -46,6 +48,8 @@ Utilities = (function() {
 		UI.closePanels();
 		UI.destroyGallery();
 		UI.moveMapToLatLon(39.9502404, -75.1592545, 11.2, 0, 0, 0);
+		
+		Analytics.sendAnalyticsScreen('Screen: Introduction');
     }
 
     var resetBrowser = function() {

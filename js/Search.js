@@ -40,6 +40,7 @@ Search = (function() {
 	        }
 	    
 		    var q = $(this).val();
+		    Analytics.sendAnalyticsEvent('Search', q);
 		    
 		    /*
 		    var url = "https://api.foursquare.com/v2/venues/search?near=" + encodeURI("Philadelphia, PA") + "&limit=10";
@@ -83,6 +84,7 @@ Search = (function() {
     var openKeyboard = function() {
         $('#search-input').bind('keyboardChange', function (e, keyboard, el) {
             // Utilities.resetTimeout();
+            
         })
         .keyboard({ 
             layout: 'custom',
@@ -114,8 +116,11 @@ Search = (function() {
     var clickSearchAPIResult = function() {
 	    var lat = $(this).data('lat');
 	    var lon = $(this).data('lon');
+	    var title = $(this).data('title');
 	    
 	    UI.moveMapToLatLon(lat, lon, 16, 0, 0);
+	    
+	    Analytics.sendAnalyticsEvent('Search', title, 'Name');
     }
     
     var formatDate = function(date) {
@@ -224,7 +229,9 @@ Search = (function() {
 	    UI.moveMapToLatLon(lat, lon, 16, 0, 0);
 	    
 	    $('nav').addClass('active');
-		$('#detail-panel').html(html).addClass('active');	    
+		$('#detail-panel').html(html).addClass('active');
+		
+		Analytics.sendAnalyticsEvent('Search', name, 'Name');	    
     }
     
     var clearSearchResults = function() {
@@ -232,6 +239,8 @@ Search = (function() {
 	    $('#search-panel-results').html('');
 	    
 	    UI.moveMapToLatLon(39.9502404, -75.1592545, 11.2, 0, 0, 300);
+	    
+	    Analytics.sendAnalyticsEvent('Search', 'Reset');
     }
     
     return {

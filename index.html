@@ -16,6 +16,17 @@
     <title>Explore the Epidemic - Spit Spreads Death</title>
 </head>
 <body class="kiosk">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147257709-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'UA-147257709-1');
+	</script>
+
+	
 	<div id="intro" class="fade show">
 		<h1>Explore the Epidemic</h1>
 		<h2>See how the 1918-19 influenza epidemic affected the citizens and neighborhoods of Philadelphia.</h2>
@@ -229,7 +240,7 @@
 	
 	<script id="single-search-tmpl" type="text/x-handlebars-template">
 		{{#each features}}
-			<li class="search-result-api" data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}">
+			<li class="search-result-api" data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}" data-title="{{ place_name }}">
 				<img src="./assets/icon-circle-poi.svg" alt="icon" />{{ place_name }}
 			</li>
 		{{/each}}
@@ -343,6 +354,7 @@
     <script src="./js/UI.js" crossorigin="anonymous"></script>
     <script src="./js/Data.js" crossorigin="anonymous"></script>
     <script src="./js/Search.js" crossorigin="anonymous"></script>
+    <script src="./js/Analytics.js" crossorigin="anonymous"></script>
     <script src="./js/App.js" crossorigin="anonymous"></script>
 </body>
 </html>
