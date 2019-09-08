@@ -60,7 +60,7 @@ Search = (function() {
 		    var fuzzy = "&fuzzyMatch=true";
 		    var country = "&country=us";
 		    var types = "&types=poi%2Caddress%2Cplace";
-		    var bbox = "&bbox=-75.57334745185173%2C%2039.50731121765379%2C%20-74.74090421442446%2C%2040.1510792131933";
+		    var bbox = "&bbox= -75.234444%2C%2039.908032%2C%20-75.038099%2C%2040.063454";
 		    var limit = "&limit=5";
 		    
 		    if (q){			    
@@ -188,18 +188,27 @@ Search = (function() {
 	    }
 	    
 	    
-	    if (birth_date != '' || birth_date != '0000.00.00') {
+	    if (birth_date != '' && birth_date !== '0000.00.00') {
 		    var date = new Date(birth_date);
 		    birth_date = formatDate(date);
+	    } else {
+		    birth_date = null;
 	    }
-	    if (death_date != '' || death_date != '0000.00.00') {
+	    
+	    if (death_date != '' && death_date !== '0000.00.00') {
 		    var date = new Date(death_date);
 		    death_date = formatDate(date);
+	    } else {
+		    death_date = null;
 	    }
-	    if (burial_date != '' || burial_date != '0000.00.00') {
+	    
+	    if (burial_date != '' && burial_date !== '0000.00.00') {
 		    var date = new Date(burial_date);
 		    burial_date = formatDate(date);
+	    } else {
+		    burial_date = null;
 	    }
+	    
 	    
 	    var data = {
 		    "name": name,
@@ -226,7 +235,7 @@ Search = (function() {
 	    var html = person_template(data);
 		
 		UI.closePanels();
-	    UI.moveMapToLatLon(lat, lon, 16, 0, 0);
+	    UI.moveMapToLatLon(lat, lon, 17, 0, 0);
 	    
 	    $('nav').addClass('active');
 		$('#detail-panel').html(html).addClass('active');

@@ -1,4 +1,8 @@
 Analytics = (function() {
+	var init = function() {
+		
+    }
+    
 	/**
 	 * Sends a Google Analytics screen change
 	 * @param {string} screen     The name of the screen view, when it changes

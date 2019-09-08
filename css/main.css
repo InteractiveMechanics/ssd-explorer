@@ -3,16 +3,6 @@
     opacity: 0; }
   100% {
     opacity: 1; } }
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-@-ms-keyframes fadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
 @keyframes fadeIn {
   0% {
     opacity: 0; }
@@ -20,9 +10,25 @@
     opacity: 1; } }
 .fade-in {
   -webkit-animation: fadeIn 1s 1 forwards;
-  -moz-animation: fadeIn 1s 1 forwards;
-  -o-animation: fadeIn 1s 1 forwards;
   animation: fadeIn 1s 1 forwards; }
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 1; }
+  70% {
+    opacity: 0.7; }
+  100% {
+    opacity: 1; } }
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  70% {
+    opacity: 0.7; }
+  100% {
+    opacity: 1; } }
+.pulse {
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite; }
 
 * {
   font-family: 'PT Sans', sans-serif;
@@ -40,7 +46,6 @@ h1 {
 
 h2 {
   font-size: 1.8rem;
-  font-style: italic;
   font-family: 'PT Serif';
   line-height: 1.8; }
 
@@ -97,25 +102,35 @@ main {
     main nav button {
       display: block;
       margin: 20px;
-      height: 90px;
-      width: 90px;
+      height: 110px;
+      width: 110px;
       padding: 15px;
       background: rgba(74, 51, 35, 0.9);
       border: none;
-      transition: 0.5s all; }
+      transition: 0.5s all;
+      color: white;
+      text-transform: uppercase;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center; }
+      main nav button:hover, main nav button:focus, main nav button:active {
+        background: #4a3323;
+        cursor: pointer; }
       main nav button svg {
         width: 100%;
-        height: auto; }
+        height: auto;
+        margin-bottom: 10px; }
         main nav button svg path {
           fill: white; }
       main nav button.active {
         opacity: 0.5; }
       main nav button#nav-explore svg {
-        width: 80%; }
+        width: 70%; }
       main nav button#nav-search svg {
-        width: 80%; }
+        width: 70%; }
       main nav button#nav-list svg {
-        width: 80%; }
+        width: 70%; }
   main aside {
     background: rgba(74, 51, 35, 0.9);
     height: 100vh;
@@ -129,7 +144,7 @@ main {
     main aside.active {
       transform: translateX(0); }
     main aside h1 {
-      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       padding: 24px 30px 25px;
       margin-bottom: 0;
       letter-spacing: 0; }
@@ -165,7 +180,14 @@ main {
     font-size: 1.4rem;
     padding: 1rem 2.4rem;
     color: #A5AA3A;
-    margin: 0 10px; }
+    margin: 0 10px;
+    transition: 0.5s all; }
+    #intro button:hover, #intro button:focus, #intro button:active,
+    #outro button:hover,
+    #outro button:focus,
+    #outro button:active {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      transform: translateY(-10px); }
   .kiosk #intro .footer, .kiosk
   #outro .footer {
     display: none; }
@@ -184,12 +206,18 @@ main {
   #search-panel form .clear-search {
     background: transparent;
     border: none;
-    padding: 0; }
+    padding: 0;
+    transition: 0.5s all; }
+    #search-panel form .clear-search:hover, #search-panel form .clear-search:focus, #search-panel form .clear-search:active {
+      cursor: pointer; }
+      #search-panel form .clear-search:hover svg, #search-panel form .clear-search:focus svg, #search-panel form .clear-search:active svg {
+        fill: white; }
     #search-panel form .clear-search svg {
       fill: gray;
       width: 48px;
       height: 48px;
-      padding: 12px; }
+      padding: 12px;
+      transition: 0.5s all; }
   #search-panel form input {
     background: none;
     border: none;
@@ -208,9 +236,11 @@ main {
 #search-panel #search-panel-results {
   margin: 0;
   padding: 0;
-  height: 550px;
+  height: 100%;
   overflow: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.5); }
+  .kiosk #search-panel #search-panel-results {
+    height: 550px; }
   #search-panel #search-panel-results li {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     color: white; }
@@ -225,7 +255,10 @@ main {
   top: auto;
   bottom: 0;
   width: 100%;
-  padding: 30px 0; }
+  padding: 30px 0;
+  display: none; }
+  .kiosk #search-panel .ui-keyboard {
+    display: block; }
   #search-panel .ui-keyboard div {
     font-size: 1.3rem; }
   #search-panel .ui-keyboard .ui-keyboard-button {
@@ -256,11 +289,21 @@ main {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; }
+    white-space: nowrap;
+    transition: 0.5s all; }
     #search-panel ul li:last-of-type,
     #explore-panel ul li:last-of-type,
     #list-panel ul li:last-of-type {
       border-bottom: none; }
+    #search-panel ul li:hover, #search-panel ul li:focus, #search-panel ul li:active,
+    #explore-panel ul li:hover,
+    #explore-panel ul li:focus,
+    #explore-panel ul li:active,
+    #list-panel ul li:hover,
+    #list-panel ul li:focus,
+    #list-panel ul li:active {
+      background: rgba(74, 51, 35, 0.9);
+      cursor: pointer; }
     #search-panel ul li img,
     #explore-panel ul li img,
     #list-panel ul li img {
@@ -268,6 +311,25 @@ main {
       height: 24px;
       margin-right: 10px;
       margin-top: -5px; }
+
+#filters {
+  position: fixed;
+  top: auto;
+  bottom: 10px;
+  right: 10px;
+  left: auto;
+  z-index: 9;
+  transform: translateX(0) !important;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 30px 10px 20px; }
+  #filters label {
+    color: #333;
+    font-weight: 400;
+    display: block; }
+    #filters label img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px; }
 
 main aside {
   overflow: auto; }
