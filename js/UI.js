@@ -206,6 +206,7 @@ UI = (function() {
 				share: false,
 				actualSize: false,
 				hash: false,
+				hideBarsDelay: 150000,
 				download: false,
 				counter: false,
 				fullScreen: false,
@@ -233,6 +234,7 @@ UI = (function() {
 				share: false,
 				actualSize: false,
 				hash: false,
+				hideBarsDelay: 150000,
 				download: false,
 				counter: false,
 				fullScreen: false,
@@ -275,12 +277,24 @@ UI = (function() {
 			    data: data,
 			    options: {
 				    legend: {
+					    fullWidth: false,
 				    	position: 'right',
 				    	labels: {
 					    	boxWidth: 14,
 					    	fontColor: '#FFF'
 				    	}
+				    },
+				    tooltips: {
+					    displayColors: false
 				    }
+				    layout: {
+			            padding: {
+			                left: 30,
+			                right: 30,
+			                top: 0,
+			                bottom: 0
+			            }
+			        }
 			    }
 			});
 		});
@@ -427,7 +441,7 @@ UI = (function() {
 	    var lon = $(this).data('lon');
 	    var content = $(this).data('content');
 		var title = $(this).data('title');
-		var address = '';
+		var address = $(this).data('tagline');
 		var type = '';
 	    
 		openDetailPanel(title, type, address, content, lon, lat);

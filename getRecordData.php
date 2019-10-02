@@ -1,5 +1,5 @@
 <?php
-	$page = 1;
+	$page = 0;
 	$record_result = array();
 	
 	function getRecordsByPage() {

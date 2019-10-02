@@ -23,6 +23,7 @@ Search = (function() {
 	    
 	    $(document).on('change', '#search-input', searchFourquareVenues);
 	    $(document).on('keypress', '#search-input', searchFourquareVenues);
+	    $(document).on('click tap drag', '.search-icon', searchFourquareVenues);
 	    
 	    $(document).on('click tap drag', '.clear-search', clearSearchResults);
 	    $(document).on('click tap drag', '#search-panel-results li.search-result-api', clickSearchAPIResult);
@@ -32,7 +33,7 @@ Search = (function() {
     var searchFourquareVenues = function(e) {
 	    Utilities.resetTimeout();
 	    
-	    if (e.type == "change" || (e.type == "keypress" && e.which == 13)){
+	    if (e.target == "svg#Capa_1" || e.type == "change" || (e.type == "keypress" && e.which == 13)){
 		    if ( $('#search-input').val() != '' ) {
 	            $('.clear-search').addClass('active');
 	        } else {
@@ -76,6 +77,7 @@ Search = (function() {
 					var name_html = name_template(dataSearch.slice(0,5));
 															
 					$('#search-panel-results').html(name_html + html);
+					hideSearchSuggestion();
 				});
 			}
 		}
@@ -243,10 +245,18 @@ Search = (function() {
 		Analytics.sendAnalyticsEvent('Search', name, 'Name');	    
     }
     
+    var showSearchSuggestion = function() {
+	    $('#search-panel-suggestions').removeClass('d-none');
+    }
+    var hideSearchSuggestion = function() {
+	    $('#search-panel-suggestions').addClass('d-none');
+    }
+    
     var clearSearchResults = function() {
 	    $('#search-input').val('');
 	    $('#search-panel-results').html('');
 	    
+	    showSearchSuggestion();
 	    UI.moveMapToLatLon(39.9502404, -75.1592545, 11.2, 0, 0, 300);
 	    
 	    Analytics.sendAnalyticsEvent('Search', 'Reset');
@@ -254,7 +264,8 @@ Search = (function() {
     
     return {
         init: init,
-        clearSearchResults: clearSearchResults
+        clearSearchResults: clearSearchResults,
+        showSearchSuggestion: showSearchSuggestion
     }
 
 })();

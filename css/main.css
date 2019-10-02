@@ -192,6 +192,14 @@ main {
   #outro .footer {
     display: none; }
 
+.lg .lg-sub-html {
+  padding: 10px 300px; }
+.lg .lg-toolbar .lg-icon {
+  font-size: 48px;
+  height: 60px;
+  padding: 20px 0;
+  width: 60px; }
+
 #search-panel form {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -265,7 +273,9 @@ main {
     border: none;
     padding: 0;
     line-height: 2.2em;
-    margin: 2px; }
+    margin: 2px;
+    height: 2.2em;
+    min-width: 2.2em; }
   #search-panel .ui-keyboard .ui-keyboard-accept {
     padding: 0 14px; }
     #search-panel .ui-keyboard .ui-keyboard-accept span {
@@ -311,6 +321,27 @@ main {
       height: 24px;
       margin-right: 10px;
       margin-top: -5px; }
+
+#explore-panel ul li {
+  height: auto;
+  min-height: 80px; }
+  #explore-panel ul li small {
+    display: block;
+    overflow: auto;
+    text-overflow: initial;
+    white-space: normal;
+    font-size: 70%;
+    font-style: italic; }
+
+#search-panel-suggestions {
+  border-radius: 6px;
+  padding: 10px;
+  text-align: center;
+  margin: 20px;
+  color: white; }
+  #search-panel-suggestions b {
+    display: block;
+    font-size: 1.4rem; }
 
 #filters {
   position: fixed;

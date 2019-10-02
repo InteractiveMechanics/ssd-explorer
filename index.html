@@ -229,6 +229,10 @@
 					</svg>
 				</button>
 			</form>
+			<div id="search-panel-suggestions">
+				<b>Not sure what to search for?</b>
+				Try searching by a family last name, a nearby landmark, or your address.
+			</div>
 			<ul id="search-panel-results"></ul>		
 		</aside>
 		
@@ -295,12 +299,18 @@
 	
 	<script id="list-neighborhood-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
-			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}">{{ title }}</li>
+			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}" data-tagline="{{ tagline }}">
+				{{ title }}
+				<small>{{ tagline }}</small>
+			</li>
 		{{/each}}
 	</script>
 	
 	<script id="single-neighborhood-tmpl" type="text/x-handlebars-template">
-		<h1>{{ title }}</h1>
+		<h1>
+			{{ title }}
+			<small>{{ tagline }}</small>
+		</h1>
 		
 		{{{ content }}}
 	</script>

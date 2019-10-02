@@ -148,3 +148,17 @@ main {
 		display: none;
 	}
 }
+
+.lg {
+	.lg-sub-html {
+		padding: 10px 300px;
+	}
+	.lg-toolbar {
+		.lg-icon {
+		    font-size: 48px;
+		    height: 60px;
+		    padding: 20px 0;
+		    width: 60px;
+		}
+	}
+}
