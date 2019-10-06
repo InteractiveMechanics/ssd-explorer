@@ -61,7 +61,8 @@ Search = (function() {
 		    var fuzzy = "&fuzzyMatch=true";
 		    var country = "&country=us";
 		    var types = "&types=poi%2Caddress%2Cplace";
-		    var bbox = "&bbox= -75.234444%2C%2039.908032%2C%20-75.038099%2C%2040.063454";
+		    //var bbox = "&bbox=-75.234444%2C%2039.908032%2C%20-75.038099%2C%2040.063454";
+		    var bbox = "&bbox=-75.240197%2C%2039.894715%2C%20-75.091397%2C%2040.024857";
 		    var limit = "&limit=5";
 		    
 		    if (q){			    

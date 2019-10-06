@@ -22,13 +22,24 @@
 			$temp_decode_result = json_decode($temp_result);
 			$result = array_merge($result, $temp_decode_result);
 			
-			/*
-			foreach ($result as &$str) {
-			    $str->content = str_replace('/spit-spreads-death/cms/sites/default/files/2019-07/', './cache/images/', $str->content);
-			}
-			*/
+			$search = array(
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-12\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-11\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-10\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-09\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-08\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-07\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-06\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-05\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-04\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-03\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-02\/',
+				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-01\/',
+			);
 			
-			fwrite($fp, print_r(json_encode($temp_decode_result), TRUE));
+			$temp_decode_result_replaced = str_replace($search, '.\/cache\/files\/', json_encode($temp_decode_result));
+			
+			fwrite($fp, print_r($temp_decode_result_replaced, TRUE));
 			print_r($message);
 		}
 	
@@ -37,7 +48,13 @@
 	}
 	
 	function deleteExistingImages() {
-		$files = glob('./cache/images/*');
+		$images = glob('./cache/files/*');
+		foreach($images as $file){
+		  	if(is_file($file))
+		    	unlink($file);
+		}
+		
+		$files = glob('./cache/files/*');
 		foreach($files as $file){
 		  	if(is_file($file))
 		    	unlink($file);
@@ -46,7 +63,7 @@
 		print_r("Previously downloaded files deleted.<br/><br/>");
 	}
 	
-	function loopThroughAndGetImages() {
+	function loopThroughAndGetFiles() {
 		
 		global $result, $urlbase;
 		
@@ -55,30 +72,18 @@
 			$doc = new DOMDocument();
 			@$doc->loadHTML($value->content);
 			$xml = simplexml_import_dom($doc);
+			
 			$images = $xml->xpath('//img[not(contains(@src, "?itok"))]');
-			
 			foreach ($images as $img) {			    
-			    $basename = basename((string) $img['src']);
+			    $basename = urldecode(basename((string) $img['src']));
 			    
-				copy($urlbase . (string) $img['src'], './cache/images/' . $basename);
-				print_r("Downloaded file: " . $basename . "<br/>");
+				copy($urlbase . (string) $img['src'], './cache/files/' . $basename);
+				print_r("Downloaded image: " . $basename . "<br/>");
 			}
-		}
-	}
-	
-	function loopThroughAndGetAudioFiles() {
-		
-		global $result, $urlbase;
-		
-		foreach($result as $key => $value) {
 			
-			$doc = new DOMDocument();
-			@$doc->loadHTML($value->content);
-			$xml = simplexml_import_dom($doc);
-			$files = $xml->xpath('//source[not(contains(@src, "?itok"))]');
-			
-			foreach ($files as $file) {			    
-			    $basename = basename((string) $file['src']);
+			$files = $xml->xpath('//source');			
+			foreach ($files as $file) {
+			    $basename = urldecode(basename((string) $file['src']));
 			    
 				copy($urlbase . (string) $file['src'], './cache/files/' . $basename);
 				print_r("Downloaded file: " . $basename . "<br/>");
@@ -90,8 +95,7 @@
 	getJsonData($url_nabe, "./cache/data_neighborhoods.json", "Neighborhood data cached. <br/><br/>");
 	
 	deleteExistingImages();
-	loopThroughAndGetImages();
-	loopThroughAndGetAudioFiles();
+	loopThroughAndGetFiles();
 
 	print_r("<br/> Data caching complete!");
 	

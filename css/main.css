@@ -200,6 +200,18 @@ main {
   padding: 20px 0;
   width: 60px; }
 
+::-webkit-scrollbar {
+  width: 12px; }
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.15);
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35); }
+
 #search-panel form {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
@@ -352,7 +364,8 @@ main {
   z-index: 9;
   transform: translateX(0) !important;
   background: rgba(255, 255, 255, 0.9);
-  padding: 20px 30px 10px 20px; }
+  padding: 20px 30px 10px 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35); }
   #filters label {
     color: #333;
     font-weight: 400;
@@ -391,6 +404,8 @@ main aside {
   main aside .field--name-uid,
   main aside .field--name-thumbnail {
     display: none; }
+  main aside .paragraph.paragraph--type--text-block:first-child {
+    padding-top: 30px; }
   main aside .paragraph--type--headline:first-of-type {
     margin-top: 30px; }
   main aside .paragraph--type--headline .field--name-field-title .field__item {
@@ -427,7 +442,8 @@ main aside {
   main aside .paragraph--type--pie-chart .field--name-field-title .field__item {
     font-family: 'Fjalla One', sans-serif;
     font-size: 1.8rem;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    display: none; }
   main aside .paragraph--type--pie-chart .field--name-field-chart-rows {
     display: none; }
   main aside .paragraph--type--death-certificate h2 {

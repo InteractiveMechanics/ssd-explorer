@@ -93,6 +93,10 @@ UI = (function() {
 					el.style.backgroundImage = 'url(./assets/icon-hospital.svg)';
 				} else if (term == 'Death Certificate') {
 					el.style.backgroundImage = 'url(./assets/icon-deathrecord.svg)';
+				} else if (term == 'Burial Sites') {
+					el.style.backgroundImage = 'url(./assets/icon-burial.svg)';
+				} else if (term == 'Housing') {
+					el.style.backgroundImage = 'url(./assets/icon-housing.svg)';
 				}
 				
 				// create a DOM element for the marker
@@ -136,6 +140,7 @@ UI = (function() {
 	    $('nav').removeClass('active');
 	    $('nav button').removeClass('active');
 	    $(this).addClass('active');
+	    $('#detail-panel').html('');
     }
     
     var openPanel = function() {
@@ -286,7 +291,7 @@ UI = (function() {
 				    },
 				    tooltips: {
 					    displayColors: false
-				    }
+				    },
 				    layout: {
 			            padding: {
 			                left: 30,
@@ -313,7 +318,7 @@ UI = (function() {
 				html += '		</audio>';
 				html += '	</div>'
 				html += '	<div class="player-controls scrubber">';
-				html += '		<p>' + title + ' <small>' + desc + '</small></p>';
+				html += '		<p>' + desc + '</p>';
 				html += '		<span id="seek-obj-container">';
 				html += '			<progress id="seek-obj" value="0" max="1"></progress>';
 				html += '		</span>';
@@ -327,7 +332,7 @@ UI = (function() {
 		});
 		
 		
-		if (address) {
+		if (type) {
 			UI.moveMapToLatLon(lat, lon, 16, 0, 45);
 		} else {
 			UI.moveMapToLatLon(lat, lon, 14, 0, 0);

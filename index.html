@@ -50,9 +50,11 @@
 	<main>
 		<nav id="filters">
 			<label for="landmark"><img src="./assets/icon-circle-landmark.svg" /> Landmark</label>
-			<label for="community-story"><img src="./assets/icon-circle-story.svg" /> Community Story</label>
+			<label for="housing" class="d-none"><img src="./assets/icon-circle-housing.svg" /> Housing</label>
 			<label for="hospital"><img src="./assets/icon-circle-hospital.svg" /> Hospital</label>
+			<label for="burial-sites"><img src="./assets/icon-circle-burial.svg" /> Burial Site</label>
 			<label for="death-certificate"><img src="./assets/icon-circle-deathrecord.svg" /> Death Certificate</label>
+			<label for="community-story"><img src="./assets/icon-circle-story.svg" /> Community Story</label>
 		</nav>
 		<div id="map"></div>
 		<nav>
@@ -253,7 +255,7 @@
 	<script id="single-search-tmpl" type="text/x-handlebars-template">
 		{{#each features}}
 			<li class="search-result-api" data-lat="{{ center.[1] }}" data-lon="{{ center.[0] }}" data-title="{{ place_name }}">
-				<img src="./assets/icon-circle-poi.svg" alt="icon" />{{ place_name }}
+				<img src="./assets/icon-circle-poi.svg" alt="icon" />{{{ place_name }}}
 			</li>
 		{{/each}}
 	</script>
@@ -282,7 +284,7 @@
 				data-status="{{ status }}"
 				data-occupation="{{ occupation }}"
 				data-employer="{{ employer }}">
-				<img src="./assets/icon-circle-person.svg" alt="icon" />{{ prefix_name }} {{ first_name }} {{ middle_name }} {{ last_name }} {{ suffix_name }}
+				<img src="./assets/icon-circle-person.svg" alt="icon" />{{ first_name }} {{ middle_name }} {{ last_name }} {{ suffix_name }}
 			</li>
 		{{/each}}
 	</script>
@@ -290,26 +292,28 @@
 	<script id="list-location-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
 			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}" data-address="{{ address }}">
-			{{#if_eq type 'Landmark'}} <img src="./assets/icon-circle-landmark.svg" />{{ title }}</li> {{/if_eq}}
-			{{#if_eq type 'Community Story'}} <img src="./assets/icon-circle-story.svg" />{{ title }}</li> {{/if_eq}}
-			{{#if_eq type 'Hospital'}} <img src="./assets/icon-circle-hospital.svg" />{{ title }}</li> {{/if_eq}}
-			{{#if_eq type 'Death Certificate'}} <img src="./assets/icon-circle-deathrecord.svg" />{{ title }}</li> {{/if_eq}}
+			{{#if_eq type 'Landmark'}} <img src="./assets/icon-circle-landmark.svg" />{{{ title }}}</li> {{/if_eq}}
+			{{#if_eq type 'Community Story'}} <img src="./assets/icon-circle-story.svg" />{{{ title }}}</li> {{/if_eq}}
+			{{#if_eq type 'Hospital'}} <img src="./assets/icon-circle-hospital.svg" />{{{ title }}}</li> {{/if_eq}}
+			{{#if_eq type 'Death Certificate'}} <img src="./assets/icon-circle-deathrecord.svg" />{{{ title }}}</li> {{/if_eq}}
+			{{#if_eq type 'Burial Sites'}} <img src="./assets/icon-circle-burial.svg" />{{{ title }}}</li> {{/if_eq}}
+			{{#if_eq type 'Housing'}} <img src="./assets/icon-circle-housing.svg" />{{{ title }}}</li> {{/if_eq}}
 		{{/each}}
 	</script>
 	
 	<script id="list-neighborhood-tmpl" type="text/x-handlebars-template">
 		{{#each .}}
 			<li data-lat="{{ lon }}" data-lon="{{ lat }}" data-content="{{ content }}" data-title="{{ title }}" data-tagline="{{ tagline }}">
-				{{ title }}
-				<small>{{ tagline }}</small>
+				{{{ title }}}
+				<small>{{{ tagline }}}</small>
 			</li>
 		{{/each}}
 	</script>
 	
 	<script id="single-neighborhood-tmpl" type="text/x-handlebars-template">
 		<h1>
-			{{ title }}
-			<small>{{ tagline }}</small>
+			{{{ title }}}
+			<small>{{{ tagline }}}</small>
 		</h1>
 		
 		{{{ content }}}
@@ -317,8 +321,8 @@
 	
 	<script id="single-death-record-tmpl" type="text/x-handlebars-template">
 		<h1>
-			{{ name }}
-			<small>{{ address }}</small>
+			{{{ name }}}
+			<small>{{{ address }}}</small>
 		</h1>
 		
 		<div class="item-list death-record-list">
@@ -348,8 +352,8 @@
 	
 	<script id="single-poi-tmpl" type="text/x-handlebars-template">
 		<h1>
-			{{ title }}
-			<small>{{ address }}</small>
+			{{{ title }}}
+			<small>{{{ address }}}</small>
 		</h1>
 		
 		{{{ content }}}
