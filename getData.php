@@ -1,8 +1,8 @@
 <?php
-	$urlbase = "http://dev.interactivemechanics.com";
+	$urlbase = "http://exhibit.spitspreadsdeath.com";
 	
-	$url_nabe = "/spit-spreads-death/cms/api/explorer/neighborhoods?_format=json";
-	$url_poi = "/spit-spreads-death/cms/api/explorer/points?_format=json";
+	$url_nabe = "/cms/api/explorer/neighborhoods?_format=json";
+	$url_poi = "/cms/api/explorer/points?_format=json";
 	
 	$result = array();
 	
