@@ -23,18 +23,18 @@
 			$result = array_merge($result, $temp_decode_result);
 			
 			$search = array(
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-12\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-11\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-10\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-09\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-08\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-07\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-06\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-05\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-04\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-03\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-02\/',
-				'\/spit-spreads-death\/cms\/sites\/default\/files\/2019-01\/',
+				'\/cms\/sites\/default\/files\/2019-12\/',
+				'\/cms\/sites\/default\/files\/2019-11\/',
+				'\/cms\/sites\/default\/files\/2019-10\/',
+				'\/cms\/sites\/default\/files\/2019-09\/',
+				'\/cms\/sites\/default\/files\/2019-08\/',
+				'\/cms\/sites\/default\/files\/2019-07\/',
+				'\/cms\/sites\/default\/files\/2019-06\/',
+				'\/cms\/sites\/default\/files\/2019-05\/',
+				'\/cms\/sites\/default\/files\/2019-04\/',
+				'\/cms\/sites\/default\/files\/2019-03\/',
+				'\/cms\/sites\/default\/files\/2019-02\/',
+				'\/cms\/sites\/default\/files\/2019-01\/',
 			);
 			
 			$temp_decode_result_replaced = str_replace($search, '.\/cache\/files\/', json_encode($temp_decode_result));
