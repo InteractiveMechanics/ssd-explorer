@@ -310,7 +310,7 @@ UI = (function() {
 			var title = $(this).find('.field--name-field-media-audio-title .field__label').text();
 			var desc = $(this).find('.field--name-field-media-audio-title .field__item').text();
 			
-			var html  = '<div class="audio-player">';
+			var html  = '<div class="audio-player d-none">';
 				html += '	<div id="play-btn"></div>';
 				html += '	<div class="audio-wrapper" id="player-container" href="javascript:;">';
 				html += '		<audio id="player" ontimeupdate="UI.initProgressBar()">';
